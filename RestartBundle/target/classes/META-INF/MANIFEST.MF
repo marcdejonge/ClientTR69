@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Export-Package: com.francetelecom.admindm.restart;uses:="org.osgi.serv
+ ice.log,org.osgi.framework"
+Built-By: olivier
+Tool: Bnd-0.0.311
+Bundle-Name: RestartBundle
+Created-By: Apache Maven Bundle Plugin
+Bundle-Version: 1.0.1.SNAPSHOT
+Build-Jdk: 1.6.0_20
+Bnd-LastModified: 1304973262783
+Bundle-ManifestVersion: 2
+Bundle-Activator: com.francetelecom.admindm.restart.Activator
+Bundle-Description: Restart bundle du client TR69
+Import-Package: org.osgi.framework;version="1.3",org.osgi.service.log;
+ version="1.3"
+Bundle-SymbolicName: com.francetelecom.acse.modus.RestartBundle
+

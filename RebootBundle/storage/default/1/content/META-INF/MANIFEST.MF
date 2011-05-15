@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Export-Package: org.jdom;uses:="org.jdom.output,org.jdom.filter",org.j
+ dom.output;uses:="org.jdom,org.jdom.adapters,org.xml.sax.helpers,org.
+ xml.sax.ext,javax.xml.transform",org.jdom.input;uses:="org.jdom,javax
+ .xml.parsers,org.xml.sax.helpers,org.xml.sax.ext",org.jdom.filter;use
+ s:="org.jdom",org.jdom.adapters;uses:="org.jdom,org.jdom.input,javax.
+ xml.transform,javax.xml.parsers",org.jdom.xpath;uses:="org.jdom",org.
+ jdom.transform;uses:="org.xml.sax.ext,org.jdom.input,org.jdom,org.xml
+ .sax.helpers,org.jdom.output,javax.xml.transform"
+Private-Package: .
+Ignore-Package: oracle.xml.parser.v2,org.jaxen.jdom,org.jaxen,org.apac
+ he.xerces.parsers,javax.xml.transform.stream,org.apache.xerces.dom,or
+ acle.xml.parser,javax.xml.transform.sax,org.w3c.dom,org.xml.sax
+Bundle-ClassPath: .,jdom-1.0.jar
+Built-By: mobo7205
+Tool: Bnd-0.0.311
+Bundle-Name: JDOMOSGI
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.6.0_0
+Bundle-Version: 0.0.1.SNAPSHOT
+Bnd-LastModified: 1246381756086
+Bundle-ManifestVersion: 2
+Bundle-Description: JDOMOSGI
+Import-Package: javax.xml.parsers,javax.xml.transform,org.jdom,org.jdo
+ m.adapters,org.jdom.filter,org.jdom.input,org.jdom.output,org.jdom.tr
+ ansform,org.jdom.xpath,org.xml.sax.ext,org.xml.sax.helpers
+Embed-Dependency: jdom;scope=compile|runtime;inline=false
+Bundle-SymbolicName: com.francetelecom.rd.modus.JDOMOSGI
+

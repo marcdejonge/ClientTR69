@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.francetelecom.acse.modus</groupId>
+		<artifactId>modus-clientTR69</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.francetelecom.acse.modus</groupId>
+	<artifactId>RebootBundle</artifactId>
+	<packaging>bundle</packaging>
+	<name>${pom.artifactId}</name>
+    <version>1.1.0-SNAPSHOT</version>
+	<description>RPCMethod du client TR69</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.0.0</version>
+				<configuration>
+					<instructions>
+						<Import-Package>
+							com.francetelecom.admindm.api,
+							com.francetelecom.admindm.model,
+							com.francetelecom.admindm.soap,
+							org.osgi.framework,
+							org.osgi.service.log,
+							org.kxml2.kdom, org.xmlpull.v1
+						</Import-Package>
+						<Private-Package />
+						<!--
+							<Service-Component> OSGI-INF/component.xml;
+							OSGI-INF/eventComponent.xml </Service-Component>
+						-->
+						<Bundle-Activator>com.francetelecom.admindm.reboot.Activator
+						</Bundle-Activator>
+					</instructions>
+				</configuration>
+			</plugin>			
+		</plugins>
+	</build>
+	 
+	<dependencies>
+		<dependency>
+			<groupId>com.francetelecom.acse.modus</groupId>
+			<artifactId>TR69ClientAPI</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.osgi</groupId>
+    		<artifactId>osgi_R4_core</artifactId>
+    		<version>1.0</version>
+		</dependency>		
+	</dependencies>
+</project>

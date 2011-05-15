@@ -1,0 +1,9 @@
+    <cwmp:SetParameterValues xmlns:cwmp="urn:dslforum-org:cwmp-1-1">
+      <ParameterList>
+        <ParameterValueStruct>
+          <Name xsi:type="xsd:string">Device.ManagementServer.PeriodicInformEnable</Name>
+          <Value xsi:type="xsd:boolean">true</Value>
+        </ParameterValueStruct>
+      </ParameterList>
+      <ParameterKey xsi:type="xsd:string"></ParameterKey>
+    </cwmp:SetParameterValues>

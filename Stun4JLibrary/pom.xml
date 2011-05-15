@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>fr.francetelecom.rd</groupId>
+		<artifactId>ft-maven</artifactId>
+		<version>1.4</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.francetelecom.acse.modus</groupId>
+	<artifactId>net-java-Stun4j</artifactId>
+	<packaging>jar</packaging>
+	<name>${pom.artifactId}</name>
+	<version>0.0.2-SNAPSHOT</version>
+	<description>STUN4J library</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<scm>
+		<connection>scm:svn:https://yourdev.rd.francetelecom.fr/svnroot/Modus/trunk/ClientTR69/StunBundle</connection>
+		<developerConnection>scm:svn:https://yourdev.rd.francetelecom.fr/svnroot/Modus/trunk/ClientTR69/StunBundle</developerConnection>
+		<url>https://yourdev.rd.francetelecom.fr/svn/viewcvs.php/Modus/?roottype=svn&amp;root=Modus/trunk/ClientTR69/StunBundle?roottype=svn&amp;root=Modus</url>
+	</scm>
+</project>

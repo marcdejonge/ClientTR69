@@ -1,0 +1,17 @@
+<projectDescription>
+  <name>OSGiApplyBundle</name>
+  <comment>Apply for bundle</comment>
+  <projects>
+    <project>DownloadBundle</project>
+    <project>IPersistBundle</project>
+    <project>TR69ClientAPI</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

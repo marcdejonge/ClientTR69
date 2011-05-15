@@ -1,0 +1,6 @@
+#config of filedata
+#Tue Aug 25 11:43:43 CEST 2009
+
+X ORANGE Usine File=./src/test/resources/device.ttx
+X ORANGE Data Save File=./src/test/resources/unknows
+X ORANGE DataModel File=./src/test/resources/parameter.csv

@@ -1,0 +1,1 @@
+1 Vendor Configuration File=./src/test/resources/Config.txt

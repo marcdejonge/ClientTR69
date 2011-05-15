@@ -1,0 +1,16 @@
+#
+#Mon Aug 24 17:01:04 CEST 2009
+Device.DeviceInfo.SerialNumber AG111111
+Device.DeviceInfo.SoftwareVersion SV1.0.5
+Device.DeviceInfo.SpecVersion 1.0
+Device.DeviceInfo.HardwareVersion HV1.0.0
+Device.DeviceInfo.Manufacturer ORANGE
+Device.DeviceInfo.ProvisioningCode 
+Device.ManagementServer.ConnectionRequestPassword orange
+Device.DeviceInfo.ProductClass TR69GenericJAVA
+Device.DeviceInfo.ManufacturerOUI Ora
+Device.ManagementServer.URL http\://localhost\:8180/ACS/CWMPServlet
+Device.DeviceInfo.Description test ceci est un test
+Device.IPingDiagnostics.Timeout 3
+Device.IPingDiagnostics.NumberOfRepetitions 10
+Device.IPingDiagnostics.Host localhost

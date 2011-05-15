@@ -1,0 +1,4 @@
+param0.unknown=should log an error
+param1=valeur1
+param2=56
+param3=valeur3

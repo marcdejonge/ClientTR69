@@ -1,0 +1,11 @@
+<cwmp:SetParameterAttributes xmlns:cwmp="urn:dslforum-org:cwmp-1-1">
+      <ParameterList>
+        <SetParameterAttributesStruct>
+          <Name xsi:type="xsd:string">Device.ManagementServer.UDPConnectionRequestAddress</Name>
+          <NotificationChange xsi:type="xsd:boolean">true</NotificationChange>
+          <Notification xsi:type="xsd:int">1</Notification>
+          <AccessListChange xsi:type="xsd:boolean">false</AccessListChange>
+          <AccessList />
+        </SetParameterAttributesStruct>
+      </ParameterList>
+    </cwmp:SetParameterAttributes>

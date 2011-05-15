@@ -1,0 +1,72 @@
+#-xargs props.xargs
+-Dorg.knopflerfish.verbosity=0
+-Dorg.knopflerfish.framework.debug.packages=false
+-Dorg.knopflerfish.framework.debug.errors=true
+-Dorg.knopflerfish.framework.debug.classloader=false
+-Dorg.knopflerfish.framework.system.export.all_14=true
+-Dorg.knopflerfish.log.out=true
+-Dorg.knopflerfish.log.level=debug
+-init 
+-istart log_all-2.0.2.jar
+-istart cm_all-2.0.1.jar
+-istart console_all-2.0.1.jar
+-istart component_all-2.0.0.jar
+-istart event_all-2.0.4.jar
+-istart  frameworkcommands-2.0.5.jar
+#-istart prefs_all-2.0.3.jar
+-istart upnp_api-2.0.0.jar
+-istart consoletty-2.0.1.jar
+-istart kxml-1.0.jar
+
+-istart org.apache.felix.upnp.extra-0.4.0.jar
+-istart com.francetelecom.upnp.basedriver-0.8.0-FTRDPATCHED.jar
+
+-install IPersistBundle.jar
+-install TR69ClientAPI.jar
+-install FilePersistBundle.jar
+-install net-java-Stun4j-0.0.1.jar
+-install JDK1.3-Util-0.0.1-SNAPSHOT.jar
+-install StunClientBundle.jar
+-install OSGIBundle.jar
+-install AddObjectBundle.jar
+-install DeleteObjectBundle.jar
+-install DownloadBundle.jar
+-install ApplyBundle.jar
+-install OSGiApplyBundle.jar
+-install GetParameterAttributesBundle.jar
+-install GetParameterNamesBundle.jar
+-install GetParameterValuesBundle.jar
+-install GetRPCMethodsBundle.jar
+-install RebootBundle.jar
+-install SetParameterAttributesBundle.jar
+-install SetParameterValuesBundle.jar
+-install CSVDataBundle.jar
+-install ServerComBundle.jar
+-install TR106Bundle.jar
+#-install UPnPMDModelBundle.jar
+
+-start IPersistBundle.jar
+
+-start TR69ClientAPI.jar
+-start FilePersistBundle.jar
+-start net-java-Stun4j-0.0.1.jar
+-start JDK1.3-Util-0.0.1-SNAPSHOT.jar
+
+-start TR106Bundle.jar
+-start StunClientBundle.jar
+-start OSGIBundle.jar
+-start AddObjectBundle.jar
+-start DeleteObjectBundle.jar
+-start DownloadBundle.jar
+-start ApplyBundle.jar
+-start OSGiApplyBundle.jar
+-start GetParameterAttributesBundle.jar
+-start GetParameterNamesBundle.jar
+-start GetParameterValuesBundle.jar
+-start GetRPCMethodsBundle.jar
+-start RebootBundle.jar
+-start SetParameterAttributesBundle.jar
+-start SetParameterValuesBundle.jar
+-start CSVDataBundle.jar
+-start ServerComBundle.jar
+#-start UPnPMDModelBundle.jar

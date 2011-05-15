@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:GetParameterValuesResponse xmlns:tns="urn:dslforum-org:cwmp-1-1" xmlns:tns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns2="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:dslforum-org:cwmp-1-1 ../../../../DownloadBundle/src/test/resources/cwmp-1-1.xsd ">
+  <ParameterList href="http://tempuri.org" id="idvalue0" tns2:offset="" tns:arrayType="">
+    <ParameterValueStruct>
+      <Name>Name</Name>
+      <Value>Value</Value>
+    </ParameterValueStruct>
+  </ParameterList>
+</tns:GetParameterValuesResponse>

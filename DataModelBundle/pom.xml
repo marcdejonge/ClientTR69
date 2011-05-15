@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>	
+		<artifactId>modus-clientTR69</artifactId>
+		<groupId>com.francetelecom.acse.modus</groupId>
+    <version>1.1.0-SNAPSHOT</version>
+	</parent>	
+	<artifactId>DataModelBundle</artifactId>
+	<packaging>bundle</packaging>
+	<name>${pom.artifactId}</name>
+    <version>1.1.0-SNAPSHOT</version>
+	<description>Provide data model TR106 for CPE</description>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.3</source>
+					<target>1.3</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.0.0</version>
+				<configuration>
+					<instructions>
+						<Export-Package>
+							com.francetelecom.model
+						</Export-Package>
+						<Import-Package>
+							com.francetelecom.acse.modus.util,
+							com.francetelecom.admindm.api,
+							com.francetelecom.admindm.model,
+							com.francetelecom.admindm.soap,
+							org.osgi.framework,
+							org.osgi.service.log,
+							org.osgi.service.upnp,
+							org.osgi.util.tracker
+						</Import-Package>
+
+						<Private-Package>						
+							com.francetelecom.tr106.gen,				com.francetelecom.tr106.implem,													
+							com.francetelecom.tr157.gen,
+							com.francetelecom.tr157.implem,
+							com.francetelecom.tr157.implem.periodicstatistic,
+							com.francetelecom.acse.modus.demo
+						</Private-Package>
+						<!--
+							<Service-Component> OSGI-INF/component.xml;
+							OSGI-INF/eventComponent.xml </Service-Component>
+						-->
+						<Bundle-Activator>com.francetelecom.model.Activator</Bundle-Activator>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>		
+		<dependency>
+			<groupId>com.francetelecom.acse.modus</groupId>
+			<artifactId>TR69ClientAPI</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:SetParameterAttributes xmlns:tns="urn:dslforum-org:cwmp-1-1" xmlns:tns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:dslforum-org:cwmp-1-1 ../../../../DownloadBundle/src/test/resources/cwmp-1-1.xsd ">
+  <ParameterList href="http://tempuri.org" id="idvalue0" tns1:offset="" tns:arrayType="">
+    <SetParameterAttributesStruct>
+      <Name>Name</Name>
+      <NotificationChange>true</NotificationChange>
+      <Notification>0</Notification>
+      <AccessListChange>true</AccessListChange>
+      <AccessList href="http://tempuri.org" id="idvalue1" tns1:offset="" tns:arrayType="">
+        <string>Subscriber</string>
+      </AccessList>
+    </SetParameterAttributesStruct>
+    <SetParameterAttributesStruct>
+      <Name>Name2</Name>
+      <NotificationChange>false</NotificationChange>
+      <Notification>2</Notification>
+      <AccessListChange>false</AccessListChange>
+      <AccessList href="http://tempuri.org" id="idvalue1" tns1:offset="" tns:arrayType="">
+        <string>Subscriber</string>
+      </AccessList>
+    </SetParameterAttributesStruct>
+  </ParameterList>
+</tns:SetParameterAttributes>

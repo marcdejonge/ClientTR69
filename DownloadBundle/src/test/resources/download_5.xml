@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  tns:Download xmlns:tns="urn:dslforum-org:cwmp-1-1" xmlns:tns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:dslforum-org:cwmp-1-1 cwmp-1-1.xsd " -->
+<tns:Download xmlns:tns="urn:dslforum-org:cwmp-1-1">
+  <CommandKey>CommandKey</CommandKey>
+  <FileType>FileType</FileType>
+  <URL></URL>
+  <Username>Username</Username>
+  <Password>Password</Password>
+  <FileSize>ctest</FileSize>
+  <TargetFileName>TargetFileName</TargetFileName>
+  <DelaySeconds>0</DelaySeconds>
+  <SuccessURL>SuccessURL</SuccessURL>
+  <FailureURL>FailureURL</FailureURL>
+</tns:Download>

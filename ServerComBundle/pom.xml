@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.francetelecom.acse.modus</groupId>
+		<artifactId>modus-clientTR69</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.francetelecom.acse.modus</groupId>
+	<artifactId>ServerComBundle</artifactId>
+	<packaging>bundle</packaging>
+	<name>${pom.artifactId}</name>
+    <version>1.1.0-SNAPSHOT</version>
+	<description>RPCMethod du client TR69</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.0.0</version>
+				<configuration>
+					<instructions>
+						<Import-Package>
+							com.francetelecom.admindm.api,
+							com.francetelecom.admindm.model,
+							com.francetelecom.admindm.soap,
+							com.francetelecom.admindm.inform,
+							org.osgi.framework, org.osgi.service.log,
+							org.kxml2.kdom, org.xmlpull.v1,
+							org.kxml2.io,
+							com.francetelecom.acse.modus.util,
+							com.francetelecom.admindm.stunclient,
+							javax.crypto, javax.crypto.spec
+						</Import-Package>
+						<Private-Package>
+							com.francetelecom.admindm.com,
+							org.apache.commons.codec.binary
+						</Private-Package>
+						<!--
+							<Service-Component> OSGI-INF/component.xml;
+							OSGI-INF/eventComponent.xml </Service-Component>
+						-->
+						<Bundle-Activator>
+							com.francetelecom.admindm.com.Activator
+						</Bundle-Activator>
+						<Embed-Dependency>
+							commons-codec;inline=true
+						</Embed-Dependency>
+					</instructions>
+				</configuration>
+			</plugin>
+			<!--  tell the compiler we can use 1.4 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<!--
+					configuration> <source>1.5</source> <target>1.4</target>
+					</configuration -->
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>		
+		<dependency>
+			<groupId>com.francetelecom.acse.modus</groupId>
+			<artifactId>TR69ClientAPI</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>com.francetelecom.acse.modus</groupId>
+			<artifactId>StunClientBundle</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
+	</dependencies>
+</project>
