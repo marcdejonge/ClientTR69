@@ -20,6 +20,7 @@
  *
  */ 
 package com.francetelecom.admindm;
+import com.francetelecom.admindm.api.FileUtil;
 import java.util.Iterator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
@@ -35,6 +36,10 @@ import com.francetelecom.admindm.model.IParameterData;
 import com.francetelecom.admindm.model.Parameter;
 import com.francetelecom.admindm.persist.IPersist;
 import com.francetelecom.admindm.soap.Fault;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Properties;
 /**
  * The Class Scheduler.
  */
@@ -50,9 +55,7 @@ public final class Scheduler implements ServiceListener {
     /** The com. */
     private ICom com = null;
     /** The model. */
-    private IModel model = null;
-    /** The csv. */
-    private ICSV csv = null;
+    private IModel model = null;    
     /** The data. */
     private final IParameterData data;
     /**
@@ -96,30 +99,11 @@ public final class Scheduler implements ServiceListener {
         } else if (service instanceof IModel) {
             onIModelChange((IModel) service, event);
             startTR69();
-        } else if (service instanceof ICSV) {
-            onICSVChange((ICSV) service, event);
-            startTR69();
         } else if (service instanceof LogService) {
             onLogChange((LogService) service, event);
         }
     }
-    /**
-     * On icsv change.
-     * @param service the service
-     * @param event the event
-     */
-    private void onICSVChange(final ICSV service, final ServiceEvent event) {
-        switch (event.getType()) {
-        case ServiceEvent.REGISTERED:
-            csv = service;
-            break;
-        case ServiceEvent.UNREGISTERING:
-            csv = null;
-            break;
-        default:
-            break;
-        }
-    }
+    
     /**
      * On i model change.
      * @param service the service
@@ -163,30 +147,25 @@ public final class Scheduler implements ServiceListener {
         if (checkState()) {
             Log.info("TR69Client is starting");
             // allow discovers root of datamodel
-            csv.setData(data);
+            File conf = FileUtil.getFileFromShortName(FileUtil.CONFIG);
+            if (conf != null) {
+            InputStream in = null;
             try {
-                csv.discoverModelRoot();
-            } catch (Fault e) {
-                Log.error(e.getFaultstring());
-                return;
+                Properties properties = new Properties();
+                // TODO ne pas passer par un fichier de properties
+                in = new FileInputStream(conf);
+                properties.load(in);
+            data.setRoot(properties.getProperty("root"));
+            } catch (Exception e) {
+            	e.printStackTrace();
             }
+        }
             Log.info("Root is " + data.getRoot());
             // put the data model structure
             model.setData(data);
             Log.debug("=======================");
             Log.debug("Model is ");
             Log.debug("=======================");
-            Log.debug(data.toString());
-            // complete the data model structure with csv content
-            csv.readStructComplement();
-            Log.debug("=======================");
-            Log.debug("Model is after add csv");
-            Log.debug("=======================");
-            Log.debug(data.toString());
-            csv.putDefaultParameter();
-            Log.info("===========================");
-            Log.debug("Model is after put default");
-            Log.info("===========================");
             Log.debug(data.toString());
             // put data into data model
             Iterator it = data.getParameterIterator();
@@ -271,6 +250,6 @@ public final class Scheduler implements ServiceListener {
      * @return true, if successful
      */
     boolean checkState() {
-        return (persist != null && com != null && csv != null && model != null);
+        return (persist != null && com != null && model != null);
     }
 }

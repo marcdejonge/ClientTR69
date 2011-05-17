@@ -2,52 +2,52 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<artifactId>modus-clientTR69</artifactId>
-		<groupId>com.francetelecom.acse.modus</groupId>
-    <version>1.1.0-SNAPSHOT</version>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>modus-clientTR69</artifactId>
+        <groupId>com.francetelecom.acse.modus</groupId>
+        <version>1.1.0-SNAPSHOT</version>
+    </parent>
 
-	<groupId>com.francetelecom.acse.modus</groupId>
-	<artifactId>OSGiApplyBundle</artifactId>
-	<packaging>bundle</packaging>
-	<name>${pom.artifactId}</name>
+    <groupId>com.francetelecom.acse.modus</groupId>
+    <artifactId>OSGiApplyBundle</artifactId>
+    <packaging>bundle</packaging>
+    <name>${pom.artifactId}</name>
     <version>1.1.0-SNAPSHOT</version>
-	<description>Apply for bundle</description>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<version>2.0.0</version>
-				<configuration>
-					<instructions>
-						<Import-Package>
+    <description>Apply for bundle</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>2.0.0</version>
+                <configuration>
+                    <instructions>
+                        <Import-Package>
 							org.osgi.framework,
 							com.francetelecom.admindm.download.api,
 							com.francetelecom.admindm.api,
 							com.francetelecom.admindm.soap
-						</Import-Package>
-						<Private-Package></Private-Package>
-						<Bundle-Activator>
+                        </Import-Package>
+                        <Private-Package></Private-Package>
+                        <Bundle-Activator>
 							com.francetelecom.admindm.osgi.apply.Activator
-						</Bundle-Activator>
-						<Export-Service>
+                        </Bundle-Activator>
+                        <Export-Service>
 							com.francetelecom.admindm.download.api.IApplyAction
-						</Export-Service>
-					</instructions>
-				</configuration>
-			</plugin>
+                        </Export-Service>
+                    </instructions>
+                </configuration>
+            </plugin>
 
-		</plugins>
-	</build>
-	<dependencies>
-		<dependency>
-			<groupId>com.francetelecom.acse.modus</groupId>
-			<artifactId>DownloadBundle</artifactId>
-			<version>${pom.version}</version>
-		</dependency>
-	</dependencies>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.francetelecom.acse.modus</groupId>
+            <artifactId>DownloadBundle</artifactId>
+            <version>${pom.version}</version>
+        </dependency>
+    </dependencies>
 </project>

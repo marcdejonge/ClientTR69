@@ -29,13 +29,12 @@ import java.io.IOException;
  */
 public class FileUtil {
     /** The FILEDEF. */
-    public static String CONFIG_FILE ="CSV.cfg";
+    public static String CONFIG_FILE ="defineFile.cfg";
     public static final String CONFIG = "1 Vendor Configuration File";
     public static final String LOG = "2 Vendor Log File";
     public static final String DATAMODEL = "X ORANGE DataModel File";
     public static final String USINE = "X ORANGE Usine File";
-    public static final String SAVE = "X ORANGE Data Save File";
-    public static final String IPCONF = "X ORANGE IP File";
+    public static final String SAVE = "X ORANGE Data Save File";    
     /**
      * Gets the File by his short name.
      * @param shortName the short filename

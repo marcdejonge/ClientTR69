@@ -1,0 +1,129 @@
+
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>distrib</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    
+    <fileSets>
+        <fileSet>
+            <directory>src/main/resources/bundles</directory>
+            <outputDirectory>lib</outputDirectory>
+            <filtered>*.jar</filtered>
+        </fileSet>
+        
+        <fileSet>
+            <directory>src/main/resources/data</directory>
+            <outputDirectory>data</outputDirectory>
+            <useDefaultExcludes>true</useDefaultExcludes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources/launch</directory>
+            <outputDirectory></outputDirectory>
+            <useDefaultExcludes>true</useDefaultExcludes>
+        </fileSet>
+    </fileSets>
+        
+    <files>
+        
+    
+    
+        <file>
+            <source>ServerComBundle/target/ServerComBundle-${pom.version}.jar</source>
+            <destName>ServerComBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>IPersistBundle/target/IPersistBundle-${pom.version}.jar</source>
+            <destName>IPersistBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>TR69ClientAPI/target/TR69ClientAPI-${pom.version}.jar</source>
+            <destName>TR69ClientAPI.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>FilePersistBundle/target/FilePersistBundle-${pom.version}.jar</source>
+            <destName>FilePersistBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>DataModelBundle/target/DataModelBundle-${pom.version}.jar</source>
+            <destName>DataModelBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+
+        <file>
+            <source>ApplyBundle/target/ApplyBundle-${pom.version}.jar</source>
+            <destName>ApplyBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        <file>
+            <source>OSGIBundle/target/OSGIBundle-${pom.version}.jar</source>
+            <destName>OSGIBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        
+        <file>
+            <source>AddObjectBundle/target/AddObjectBundle-${pom.version}.jar</source>
+            <destName>AddObjectBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>DeleteObjectBundle/target/DeleteObjectBundle-${pom.version}.jar</source>
+            <destName>DeleteObjectBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>DownloadBundle/target/DownloadBundle-${pom.version}.jar</source>
+            <destName>DownloadBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>GetParameterAttributesBundle/target/GetParameterAttributesBundle-${pom.version}.jar</source>
+            <destName>GetParameterAttributesBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        <file>
+            <source>GetParameterNamesBundle/target/GetParameterNamesBundle-${pom.version}.jar</source>
+            <destName>GetParameterNamesBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        <file>
+            <source>GetParameterValuesBundle/target/GetParameterValuesBundle-${pom.version}.jar</source>
+            <destName>GetParameterValuesBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        <file>
+            <source>GetRPCMethodsBundle/target/GetRPCMethodsBundle-${pom.version}.jar</source>
+            <destName>GetRPCMethodsBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        <file>
+            <source>RebootBundle/target/RebootBundle-${pom.version}.jar</source>
+            <destName>RebootBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        <file>
+            <source>SetParameterAttributesBundle/target/SetParameterAttributesBundle-${pom.version}.jar</source>
+            <destName>SetParameterAttributesBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
+        
+        <file>
+            <source>SetParameterValuesBundle/target/SetParameterValuesBundle-${pom.version}.jar</source>
+            <destName>SetParameterValuesBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>        
+    </files>
+
+</assembly>

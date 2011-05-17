@@ -58,7 +58,7 @@ public final class Activator implements BundleActivator, ServiceListener {
      */
     public void start(final BundleContext context) throws Exception {
         this.bundleContext = context;
-        File conf = FileUtil.getFileFromShortName(FileUtil.IPCONF);
+        File conf = FileUtil.getFileFromShortName(FileUtil.CONFIG);
         if (conf != null) {
             InputStream in = null;
             try {
