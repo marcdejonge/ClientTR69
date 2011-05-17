@@ -1,4 +1,0 @@
-DeviceSummary;STRING;0;0;0;1;1;0;;Device:1.0[](Baseline:1),ABCService:1.0[1](Baseline:1);0;0
-ManagementServer.X_ORANGE-COM_MaxConnectionRequest;UINT;0;1;1;2;0;0;;50;0;0
-ManagementServer.X_ORANGE-COM_FreqConnectionRequest;UINT;0;1;1;2;0;0;;3600;0;0
-

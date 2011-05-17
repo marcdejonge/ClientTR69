@@ -1,7 +1,0 @@
--Dch.ethz.iks.concierge.jars=file:.  
--Dch.ethz.iks.concierge.log.enabled=true
--Dch.ethz.iks.concierge.log.level=3
-
-
--init 
--istart /target/RestartBundle-0.0.1-SNAPSHOT.jar

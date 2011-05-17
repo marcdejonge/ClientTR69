@@ -13,7 +13,7 @@
 	      <includes>
     	<include>com.francetelecom.rd.modus:JDOMOSGI</include>
     	<include>com.francetelecom.rd.modus:TR69ClientAPI</include>
-    	<include>com.francetelecom.rd.modus:CSVDataBundle</include>
+
     	<include>com.francetelecom.rd.modus:AddObjectBundle</include>
     	<include>com.francetelecom.rd.modus:DeleteObjectBundle</include>
     	<include>com.francetelecom.rd.modus:DownloadBundle</include>
@@ -34,68 +34,6 @@
 	  </moduleSets>
 
  	<fileSets>
-		<!-- fileSet>
-			<directory></directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		   		<include>initdist.jar</include>
-		 	</includes>
-	   	</fileSet>
-   		<fileSet>
-			<directory>JDOMOSGI/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet>
-
-
-   		<fileSet>
-			<directory>TR69ClientAPI/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet>
-
-   		<fileSet>
-			<directory>AddObjectBundle/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet>
-   		<fileSet>
-			<directory>DownloadBundle/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet>
-
-   		<fileSet>
-			<directory>GetParameterAttributesBundle/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet>
-   		<fileSet>
-			<directory>GetParameterNamesBundle/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet>
-
-   		<fileSet>
-			<directory>GetParameterValuesBundle/target/</directory>
-		 	<outputDirectory></outputDirectory>
-		 	<includes>
-		   		<include>*.jar</include>
-		 	</includes>
-	   	</fileSet-->
 
    		<fileSet>
 			<directory></directory>
@@ -106,11 +44,6 @@
 	   	</fileSet>
 
 
-<!--GetRPCMethodsBundle/target/
-RebootBundle/target/
-SetParameterAttributesBundle/target/
-SetParameterValuesBundle/target/
-CSVDataBundle/target/-->
 
 	 </fileSets>
 
