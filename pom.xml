@@ -167,6 +167,7 @@
         <module>ServerComBundle</module>
         <module>ApplyBundle</module>        
         <module>OSGIBundle</module>
+        <module>OSGiApplyBundle</module>
         <module>AddObjectBundle</module>
         <module>DeleteObjectBundle</module>
         <module>DownloadBundle</module>

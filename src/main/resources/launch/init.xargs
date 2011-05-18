@@ -15,7 +15,8 @@
 -istart lib/frameworkcommands-2.0.5.jar
 
 -istart lib/consoletty-2.0.1.jar
--istart lib/kxml2.jar
+-istart lib/kxml-2.3.0.kf3.jar
+-istart lib/org.teleal.cling.osgi.basedriver.1.0-SNAPSHOT.jar
 
 -install lib/IPersistBundle.jar
 -install lib/TR69ClientAPI.jar
@@ -36,23 +37,22 @@
 -install lib/ServerComBundle.jar
 -install lib/DataModelBundle.jar
 
--start IPersistBundle.jar
--start TR69ClientAPI.jar
--start FilePersistBundle.jar
--start DataModelBundle.jar
--start StunClientBundle.jar
--start OSGIBundle.jar
--start AddObjectBundle.jar
--start DeleteObjectBundle.jar
--start DownloadBundle.jar
--start ApplyBundle.jar
--start OSGiApplyBundle.jar
--start GetParameterAttributesBundle.jar
--start GetParameterNamesBundle.jar
--start GetParameterValuesBundle.jar
--start GetRPCMethodsBundle.jar
--start RebootBundle.jar
--start SetParameterAttributesBundle.jar
--start SetParameterValuesBundle.jar
--start ServerComBundle.jar
+-start lib/IPersistBundle.jar
+-start lib/TR69ClientAPI.jar
+-start lib/FilePersistBundle.jar
+-start lib/DataModelBundle.jar
+-start lib/OSGIBundle.jar
+-start lib/AddObjectBundle.jar
+-start lib/DeleteObjectBundle.jar
+-start lib/DownloadBundle.jar
+-start lib/ApplyBundle.jar
+-start lib/OSGiApplyBundle.jar
+-start lib/GetParameterAttributesBundle.jar
+-start lib/GetParameterNamesBundle.jar
+-start lib/GetParameterValuesBundle.jar
+-start lib/GetRPCMethodsBundle.jar
+-start lib/RebootBundle.jar
+-start lib/SetParameterAttributesBundle.jar
+-start lib/SetParameterValuesBundle.jar
+-start lib/ServerComBundle.jar
 
