@@ -33,8 +33,7 @@
 							com.francetelecom.admindm.inform,
 							com.francetelecom.admindm.stunclient
                         </Export-Package>
-                        <Import-Package>
-							com.francetelecom.acse.modus.util,
+                        <Import-Package>							
 							com.francetelecom.admindm.persist,
 							org.osgi.framework,
 							org.osgi.service.log,

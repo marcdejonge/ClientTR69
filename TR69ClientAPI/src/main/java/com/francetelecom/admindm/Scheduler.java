@@ -18,8 +18,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- */ 
+ */
 package com.francetelecom.admindm;
+
+import com.francetelecom.admindm.api.EventCode;
 import com.francetelecom.admindm.api.FileUtil;
 import java.util.Iterator;
 import org.osgi.framework.BundleContext;
@@ -32,18 +34,20 @@ import com.francetelecom.admindm.api.ICom;
 import com.francetelecom.admindm.api.IModel;
 import com.francetelecom.admindm.api.Log;
 import com.francetelecom.admindm.inform.ScheduleInform;
+import com.francetelecom.admindm.model.EventStruct;
 import com.francetelecom.admindm.model.IParameterData;
 import com.francetelecom.admindm.model.Parameter;
 import com.francetelecom.admindm.persist.IPersist;
-import com.francetelecom.admindm.soap.Fault;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
+
 /**
  * The Class Scheduler.
  */
 public final class Scheduler implements ServiceListener {
+
     /** The context. */
     private final BundleContext context;
     /** The Constant IPERSIST. */
@@ -55,9 +59,10 @@ public final class Scheduler implements ServiceListener {
     /** The com. */
     private ICom com = null;
     /** The model. */
-    private IModel model = null;    
+    private IModel model = null;
     /** The data. */
     private final IParameterData data;
+
     /**
      * Instantiates a new scheduler.
      * @param pContext the context
@@ -77,12 +82,12 @@ public final class Scheduler implements ServiceListener {
             com = (ICom) context.getService(icomRef);
         }
         ServiceReference logServiceRef;
-        logServiceRef = context
-                .getServiceReference(LogService.class.getName());
+        logServiceRef = context.getServiceReference(LogService.class.getName());
         if (logServiceRef != null) {
             Log.setLogService((LogService) context.getService(logServiceRef));
         }
     }
+
     /**
      * Service changed.
      * @param event the event
@@ -103,7 +108,7 @@ public final class Scheduler implements ServiceListener {
             onLogChange((LogService) service, event);
         }
     }
-    
+
     /**
      * On i model change.
      * @param service the service
@@ -112,16 +117,17 @@ public final class Scheduler implements ServiceListener {
     private void onIModelChange(final IModel service,
             final ServiceEvent event) {
         switch (event.getType()) {
-        case ServiceEvent.REGISTERED:
-            model = service;
-            break;
-        case ServiceEvent.UNREGISTERING:
-            model = null;
-            break;
-        default:
-            break;
+            case ServiceEvent.REGISTERED:
+                model = service;
+                break;
+            case ServiceEvent.UNREGISTERING:
+                model = null;
+                break;
+            default:
+                break;
         }
     }
+
     /**
      * On log change.
      * @param service the service
@@ -130,16 +136,17 @@ public final class Scheduler implements ServiceListener {
     private void onLogChange(final LogService service,
             final ServiceEvent event) {
         switch (event.getType()) {
-        case ServiceEvent.REGISTERED:
-            Log.setLogService(service);
-            break;
-        case ServiceEvent.UNREGISTERING:
-            Log.setLogService(null);
-            break;
-        default:
-            break;
+            case ServiceEvent.REGISTERED:
+                Log.setLogService(service);
+                break;
+            case ServiceEvent.UNREGISTERING:
+                Log.setLogService(null);
+                break;
+            default:
+                break;
         }
     }
+
     /**
      * Start t r69.
      */
@@ -149,20 +156,21 @@ public final class Scheduler implements ServiceListener {
             // allow discovers root of datamodel
             File conf = FileUtil.getFileFromShortName(FileUtil.CONFIG);
             if (conf != null) {
-            InputStream in = null;
-            try {
-                Properties properties = new Properties();
-                // TODO ne pas passer par un fichier de properties
-                in = new FileInputStream(conf);
-                properties.load(in);
-            data.setRoot(properties.getProperty("root"));
-            } catch (Exception e) {
-            	e.printStackTrace();
+                InputStream in = null;
+                try {
+                    Properties properties = new Properties();
+                    // TODO ne pas passer par un fichier de properties
+                    in = new FileInputStream(conf);
+                    properties.load(in);
+                    data.setRoot(properties.getProperty("root"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
-            Log.info("Root is " + data.getRoot());
+            Log.info("Root is " + data.getRoot());            
             // put the data model structure
             model.setData(data);
+            putDefaultParameter();
             Log.debug("=======================");
             Log.debug("Model is ");
             Log.debug("=======================");
@@ -175,8 +183,7 @@ public final class Scheduler implements ServiceListener {
                 p = (Parameter) it.next();
                 persist.restoreParameterNotification(p.getName());
                 persist.restoreParameterSubscriber(p.getName());
-                value = persist
-                        .restoreParameterValue(p.getName(), p.getType());
+                value = persist.restoreParameterValue(p.getName(), p.getType());
                 if (value != null) {
                     p.setValueWithout(value);
                 }
@@ -191,12 +198,10 @@ public final class Scheduler implements ServiceListener {
             // save data model
             while (it.hasNext()) {
                 p = (Parameter) it.next();
-                persist.persist(p.getName(), p.getAccessList(), p
-                        .getNotification(), p.getValue(), p.getType());
+                persist.persist(p.getName(), p.getAccessList(), p.getNotification(), p.getValue(), p.getType());
             }
-            context
-                    .registerService(IParameterData.class.getName(), data,
-                            null);
+            context.registerService(IParameterData.class.getName(), data,
+                    null);
             com.setRunning(true);
             new Thread(com, "Com Server").start();
             ScheduleInform si = new ScheduleInform(data);
@@ -209,6 +214,7 @@ public final class Scheduler implements ServiceListener {
             }
         }
     }
+
     /**
      * On i com change.
      * @param service the service
@@ -216,17 +222,18 @@ public final class Scheduler implements ServiceListener {
      */
     private void onIComChange(final ICom service, final ServiceEvent event) {
         switch (event.getType()) {
-        case ServiceEvent.REGISTERED:
-            com = service;
-            break;
-        case ServiceEvent.UNREGISTERING:
-            com = null;
-            break;
-        default:
-            break;
+            case ServiceEvent.REGISTERED:
+                com = service;
+                break;
+            case ServiceEvent.UNREGISTERING:
+                com = null;
+                break;
+            default:
+                break;
         }
         data.setCom(com);
     }
+
     /**
      * On i persist change.
      * @param service the service
@@ -235,21 +242,42 @@ public final class Scheduler implements ServiceListener {
     private void onIPersistChange(final IPersist service,
             final ServiceEvent event) {
         switch (event.getType()) {
-        case ServiceEvent.REGISTERED:
-            persist = service;
-            break;
-        case ServiceEvent.UNREGISTERING:
-            persist = null;
-            break;
-        default:
-            break;
+            case ServiceEvent.REGISTERED:
+                persist = service;
+                break;
+            case ServiceEvent.UNREGISTERING:
+                persist = null;
+                break;
+            default:
+                break;
         }
     }
+
     /**
      * Check state.
      * @return true, if successful
      */
     boolean checkState() {
         return (persist != null && com != null && model != null);
+    }
+
+    /**
+     * Put default parameter.
+     * @see com.francetelecom.admindm.api.ICSV#putDefaultParameter()
+     */
+    public void putDefaultParameter() {
+        File dataSave = FileUtil.getFileFromShortName(FileUtil.SAVE);
+        if (dataSave == null) {
+            StringBuffer error = new StringBuffer(FileUtil.SAVE);
+            error.append(" is not defined : no persistance will be present.");
+            Log.error(error.toString());
+        }
+        if (dataSave == null || !dataSave.exists()) {
+            data.addEvent(new EventStruct(EventCode.BOOTSTRAP, ""));
+        }
+        data.addEvent(new EventStruct(EventCode.BOOT, ""));
+        PropertiesReader reader;
+        reader = new PropertiesReader(data);
+        reader.read(FileUtil.getFileFromShortName(FileUtil.USINE));
     }
 }

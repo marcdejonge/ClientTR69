@@ -33,7 +33,6 @@
 							com.francetelecom.model
 						</Export-Package>
 						<Import-Package>
-							com.francetelecom.acse.modus.util,
 							com.francetelecom.admindm.api,
 							com.francetelecom.admindm.model,
 							com.francetelecom.admindm.soap,

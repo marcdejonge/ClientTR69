@@ -28,7 +28,6 @@
 							org.osgi.framework, org.osgi.service.log,
 							org.kxml2.kdom, org.xmlpull.v1,
 							org.kxml2.io,
-							com.francetelecom.acse.modus.util,
 							com.francetelecom.admindm.stunclient,
 							javax.crypto, javax.crypto.spec
 						</Import-Package>

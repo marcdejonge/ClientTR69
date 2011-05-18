@@ -41,7 +41,7 @@ import com.francetelecom.tr157.implem.DiscoveryImp;
 import com.francetelecom.tr157.implem.ParameterImpl;
 import com.francetelecom.tr157.implem.PeriodicStatisticsImpl;
 import com.francetelecom.tr157.implem.SampleSetImpl;
-import com.francetelecom.tr157.implem.UPnPImp;
+//import com.francetelecom.tr157.implem.UPnPImp;
 
 public class Model implements IModel {
 
@@ -84,7 +84,7 @@ public class Model implements IModel {
 			new LAN(data, data.getRoot() + "LAN.").initialize();
 			new IPingDiagnosticsImpl(data, data.getRoot() + "IPingDiagnostics.")
 					.initialize();
-			new UPnPImp(data, data.getRoot() + "Services.UPnP.");
+			//new UPnPImp(data, data.getRoot() + "Services.UPnP.");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

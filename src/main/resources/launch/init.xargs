@@ -16,7 +16,10 @@
 
 -istart lib/consoletty-2.0.1.jar
 -istart lib/kxml-2.3.0.kf3.jar
--istart lib/org.teleal.cling.osgi.basedriver.1.0-SNAPSHOT.jar
+-istart lib/upnp_api-3.0.0.jar
+#-istart lib/org.teleal.cling.osgi.basedriver.1.0-SNAPSHOT.jar
+
+
 
 -install lib/IPersistBundle.jar
 -install lib/TR69ClientAPI.jar
@@ -36,6 +39,7 @@
 -install lib/SetParameterValuesBundle.jar
 -install lib/ServerComBundle.jar
 -install lib/DataModelBundle.jar
+
 
 -start lib/IPersistBundle.jar
 -start lib/TR69ClientAPI.jar
