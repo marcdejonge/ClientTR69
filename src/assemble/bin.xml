@@ -28,6 +28,11 @@
         
     <files>
         
+        <file>
+            <source>OSGiApplyBundle/target/OSGiApplyBundle-${pom.version}.jar</source>
+            <destName>OSGiApplyBundle.jar</destName>            
+            <outputDirectory>lib</outputDirectory>
+        </file>
     
     
         <file>

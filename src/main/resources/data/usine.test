@@ -1,0 +1,22 @@
+# 
+# This file is used to by the Device Adapter to Set/Get values
+# This file must be updated with your own parameters values
+# 
+DeviceInfo.Manufacturer=ORANGE
+DeviceInfo.ManufacturerOUI=ORANGE
+DeviceInfo.ProductClass=STB
+DeviceInfo.SerialNumber=TOTO11111
+DeviceInfo.HardwareVersion=HV1.23
+DeviceInfo.SoftwareVersion=SV1.56
+DeviceInfo.ProvisioningCode=
+DeviceInfo.SpecVersion=1.0
+ManagementServer.ConnectionRequestPassword=orange
+ManagementServer.URL=http://localhost:8180/ACS/CWMPServlet
+ManagementServer.STUNServerAddress=
+ManagementServer.STUNServerPort=3478
+ManagementServer.STUNEnable=true
+ManagementServer.ConnectionRequestUsername=greg
+ManagementServer.ConnectionRequestPassword=orange
+ManagementServer.STUNMaximumKeepAlivePeriod=30
+ManagementServer.STUNMinimumKeepAlivePeriod=30
+
