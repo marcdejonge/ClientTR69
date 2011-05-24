@@ -1,16 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.francetelecom.acse.modus</groupId>
-	<artifactId>DeleteObjectBundle</artifactId>
 	<parent>
 		<artifactId>modus-clientTR69</artifactId>
 		<groupId>com.francetelecom.acse.modus</groupId>
 		<version>1.1.0-SNAPSHOT</version>
-	</parent>	
-	<packaging>bundle</packaging>
-	<name>${pom.artifactId}</name>
-	<version>1.1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>DeleteObjectBundle</artifactId>	
+	<name>${project.artifactId}</name>
+        <packaging>bundle</packaging>
 	<description>RPCMethod du client TR69</description>
 	
 	<build>
@@ -46,7 +43,7 @@
 		<dependency>
 			<groupId>com.francetelecom.acse.modus</groupId>
 			<artifactId>TR69ClientAPI</artifactId>
-			<version>${pom.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>

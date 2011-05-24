@@ -9,9 +9,7 @@
     <groupId>com.francetelecom.acse.modus</groupId>
     <artifactId>IPersistBundle</artifactId>
     <packaging>bundle</packaging>
-    <name>${pom.artifactId}</name>
-    <version>${parent.version}</version>
-    
+    <name>${project.artifactId}</name>
     <description>Definition of interface for Persistance for TR69 Client API</description>
     <build>
         <plugins>

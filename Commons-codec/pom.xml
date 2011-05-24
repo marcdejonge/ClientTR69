@@ -14,7 +14,7 @@
 	<groupId>com.francetelecom.acse.modus</groupId>
 	<artifactId>Commons-codec-bundle</artifactId>
 	<packaging>bundle</packaging>
-	<name>${pom.artifactId}</name>
+	<name>${project.artifactId}</name>
 	<version>1.3</version>
 	<description>Commons codec bundle</description>
 	<build>
