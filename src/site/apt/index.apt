@@ -9,9 +9,10 @@
 Main Concept
 
     This software is done to give the oportunity to manage device threw CWMP, the protocole specified
-    by Broadband forum. It has been done into Orange Labs by O.Beyler to be easy to expand and to allow lot of evolution.
+    by Broadband Forum. It has been done into Orange Labs by O.Beyler to be easy to expand and to allow lot of evolution.
     For example, each RPC Method could be replace by a new version without any impact on others.
-    The CWMP protocol define mandatory
+    The CWMP protocol define mandatory RPCMethod and some are not mandatory.
+
 
 Architecture
 
@@ -38,16 +39,42 @@ Data Model
     void set(final Parameter param, final Object obj) throws Fault;
 +-------------------------------------+
 
-    then you only have to specify that this parameter use a setter.
+It will be invoked when Modus received from ACS a SetParameterValues on a parameter.
 
 
 ** Getter Interface
 
-** Checker Interface
+If you need to define a specific behavior to get  parameter value, you can create a <<Getter>> which must implement this method :
+
++-------------------------------------+
+    Object get(String sessionId);
++-------------------------------------+
+
+It will be invoked when Modus received from ACS a GetParameterValues on a parameter.
+
+** CheckCallBack Interface
+
++-------------------------------------+
+void check(final Object value) throws Fault;
++-------------------------------------+
+
+It will be invoked when Modus received from ACS a SetParameterValues on a parameter.
+But before setting the value, each CheckCallback will be invoked to verify if the value is correct.
+If it's not correct a Fault is return to the ACS request.
 
 ** Factory Interface
 
+This interface is usefull to implement a specific behaviour on an object when the RPCMethod AddObject or
+
++-------------------------------------+
+int createObjectInstance(long instanceId, IParameterData data) throws Fault;
+int deleteObjectInstance(long instanceId, IParameterData data) throws Fault;
++-------------------------------------+
+
 ** Observable
+
+All parameter of the data model implement Observable design pattern. So, if you need to be notified from any update you could
+observe it.
 
 ** sample
 
