@@ -12,15 +12,29 @@ Main Concept
     by Broadband Forum. It has been done into Orange Labs by O.Beyler to be easy to expand and to allow lot of evolution.
     For example, each RPC Method could be replace by a new version without any impact on others.
     The CWMP protocol define mandatory RPCMethod and some are not mandatory.
+    It has been done originally into Orange Labs, and it's now maintain by AgileACS team.
 
+How build and start
+
+    As this project use maven2, you only have to do this:
+
++-------------------------------------+
+    maven clean install
+    maven assembly:assembly
++-------------------------------------+
+
+    It will produce a zip with all necessary to start into target directory.
+    unzip it where you want to use it and modify the <<<data/usine.txt>>> to specify the URL of ACS.    
 
 Architecture
+
+[./images/Components.png]
 
 Data Model
 
 * Principle
 
-    A datamodel is base d on TR106 specification. It's a set of key value often represented as a tree.
+    A datamodel is based on <<TR106>> specification. It's a set of key value often represented as a tree.
     Some argues are mandatory and the behavior are well define.
     It has been define into DataModelBundle.
 
@@ -39,18 +53,18 @@ Data Model
     void set(final Parameter param, final Object obj) throws Fault;
 +-------------------------------------+
 
-It will be invoked when Modus received from ACS a SetParameterValues on a parameter.
+    It will be invoked when Modus received from ACS a SetParameterValues on a parameter.
 
 
 ** Getter Interface
 
-If you need to define a specific behavior to get  parameter value, you can create a <<Getter>> which must implement this method :
+    If you need to define a specific behavior to get  parameter value, you can create a <<Getter>> which must implement this method :
 
 +-------------------------------------+
     Object get(String sessionId);
 +-------------------------------------+
 
-It will be invoked when Modus received from ACS a GetParameterValues on a parameter.
+    It will be invoked when Modus received from ACS a GetParameterValues on a parameter.
 
 ** CheckCallBack Interface
 
@@ -58,13 +72,13 @@ It will be invoked when Modus received from ACS a GetParameterValues on a parame
 void check(final Object value) throws Fault;
 +-------------------------------------+
 
-It will be invoked when Modus received from ACS a SetParameterValues on a parameter.
-But before setting the value, each CheckCallback will be invoked to verify if the value is correct.
-If it's not correct a Fault is return to the ACS request.
+    It will be invoked when Modus received from ACS a SetParameterValues on a parameter.
+    But before setting the value, each CheckCallback will be invoked to verify if the value is correct.
+    If it's not correct a Fault is return to the ACS request.
 
 ** Factory Interface
 
-This interface is usefull to implement a specific behaviour on an object when the RPCMethod AddObject or
+    This interface is usefull to implement a specific behaviour on an object when the RPCMethod AddObject or
 
 +-------------------------------------+
 int createObjectInstance(long instanceId, IParameterData data) throws Fault;
@@ -73,8 +87,8 @@ int deleteObjectInstance(long instanceId, IParameterData data) throws Fault;
 
 ** Observable
 
-All parameter of the data model implement Observable design pattern. So, if you need to be notified from any update you could
-observe it.
+    All parameter of the data model implement Observable design pattern. So, if you need to be notified from any update you could
+    observe it.
 
 ** sample
 
