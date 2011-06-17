@@ -16,7 +16,7 @@ Main Concept
 
 How build and start
 
-    As this project use maven2, you only have to do this:
+    As this project use maven3, you only have to do this:
 
 +-------------------------------------+
     maven clean install
@@ -25,6 +25,12 @@ How build and start
 
     It will produce a zip with all necessary to start into target directory.
     unzip it where you want to use it and modify the <<<data/usine.txt>>> to specify the URL of ACS.    
+    This file defines default parameters values for the first boot of the CPE.
+    After this first boot, the defaults values aren't use anymore by CPE.
+    It uses the saved parameters located into <<<data/data.sav>>>. So, if you need to redefine the 
+    bootstrap, you have just to modify the <<<usine.txt file>>> and to delete the <<<data.sav>>>.
+
+[./images/Bootstrap.png]
 
 Architecture
 
@@ -78,7 +84,7 @@ void check(final Object value) throws Fault;
 
 ** Factory Interface
 
-    This interface is usefull to implement a specific behaviour on an object when the RPCMethod AddObject or
+    This interface is usefull to implement a specific behaviour on an object when the RPCMethod AddObject or DeleteObject 
 
 +-------------------------------------+
 int createObjectInstance(long instanceId, IParameterData data) throws Fault;
@@ -87,8 +93,7 @@ int deleteObjectInstance(long instanceId, IParameterData data) throws Fault;
 
 ** Observable
 
-    All parameter of the data model implement Observable design pattern. So, if you need to be notified from any update you could
-    observe it.
+    All parameters of the data model implement Observable design pattern. So, if you need to be notified from any update you only have to observe it.
 
 ** sample
 
