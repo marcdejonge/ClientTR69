@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1362405386894' name='com.francetelecom.tr69client.api' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1362405971786' name='com.francetelecom.tr69client.api' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='com.francetelecom.tr69client.api'/>
@@ -7,9 +7,9 @@
       <attribute name='version' type='Version' value='1.1.0'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='386a70b099bf5b673ca9f3113d834bcaec34445e46f6489ba182def8a92f8cdb'/>
+      <attribute name='osgi.content' value='08ee98f4677c02ffb09ebb4dae9e85dd3f435396366291862f9012eb8b9a6af1'/>
       <attribute name='url' value='generated/com.francetelecom.tr69client.api.jar'/>
-      <attribute name='size' type='Long' value='150031'/>
+      <attribute name='size' type='Long' value='150024'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
@@ -25,28 +25,28 @@
       <attribute name='version' type='Version' value='1.1.0'/>
       <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
       <attribute name='bundle-version' type='Version' value='1.1.0'/>
-      <directive name='uses' value='org.xmlpull.v1,com.francetelecom.admindm.model,org.kxml2.kdom,org.osgi.service.log,com.francetelecom.admindm.soap'/>
+      <directive name='uses' value='org.osgi.service.log,com.francetelecom.admindm.soap,org.kxml2.kdom,org.xmlpull.v1,com.francetelecom.admindm.model'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.model'/>
       <attribute name='version' type='Version' value='1.1.0'/>
       <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
       <attribute name='bundle-version' type='Version' value='1.1.0'/>
-      <directive name='uses' value='org.kxml2.kdom,com.francetelecom.admindm.soap,com.francetelecom.admindm.persist,com.francetelecom.admindm.api'/>
+      <directive name='uses' value='com.francetelecom.admindm.persist,com.francetelecom.admindm.soap,com.francetelecom.admindm.api,org.kxml2.kdom'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.soap'/>
       <attribute name='version' type='Version' value='1.1.0'/>
       <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
       <attribute name='bundle-version' type='Version' value='1.1.0'/>
-      <directive name='uses' value='org.kxml2.kdom,com.francetelecom.admindm.api'/>
+      <directive name='uses' value='com.francetelecom.admindm.api,org.kxml2.kdom'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.inform'/>
       <attribute name='version' type='Version' value='1.1.0'/>
       <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
       <attribute name='bundle-version' type='Version' value='1.1.0'/>
-      <directive name='uses' value='com.francetelecom.admindm.model,org.kxml2.kdom,com.francetelecom.admindm.soap,com.francetelecom.admindm.api'/>
+      <directive name='uses' value='com.francetelecom.admindm.soap,com.francetelecom.admindm.api,org.kxml2.kdom,com.francetelecom.admindm.model'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.stunclient'/>

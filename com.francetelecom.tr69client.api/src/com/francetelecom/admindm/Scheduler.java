@@ -29,7 +29,6 @@ import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
-import com.francetelecom.admindm.api.ICSV;
 import com.francetelecom.admindm.api.ICom;
 import com.francetelecom.admindm.api.IModel;
 import com.francetelecom.admindm.api.Log;
