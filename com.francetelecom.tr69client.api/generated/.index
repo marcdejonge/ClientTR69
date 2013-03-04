@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<repository increment='1362408742395' name='com.francetelecom.tr69client.api' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='com.francetelecom.tr69client.api'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='0f796bf71fab1189f3ed6a1bbe1b92c66f226cb3a5663b932c9a89ae2be81255'/>
+      <attribute name='url' value='generated/com.francetelecom.tr69client.api.jar'/>
+      <attribute name='size' type='Long' value='150029'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.api'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+      <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+      <directive name='uses' value='org.xmlpull.v1,org.osgi.service.log,com.francetelecom.admindm.soap,org.kxml2.kdom,com.francetelecom.admindm.model'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.model'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+      <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+      <directive name='uses' value='com.francetelecom.admindm.soap,org.kxml2.kdom,com.francetelecom.admindm.persist,com.francetelecom.admindm.api'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.soap'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+      <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+      <directive name='uses' value='org.kxml2.kdom,com.francetelecom.admindm.api'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.inform'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+      <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+      <directive name='uses' value='com.francetelecom.admindm.soap,org.kxml2.kdom,com.francetelecom.admindm.model,com.francetelecom.admindm.api'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.stunclient'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+      <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.api'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+    </capability>
+    <capability namespace='bndtools.workspace'>
+      <attribute name='bndtools.workspace' value='file:/C:/Projects/FlexiblePowerSuite/workspace/ClientTR69'/>
+      <attribute name='project.path' value='/com.francetelecom.tr69client.api'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=com.francetelecom.admindm.api)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=com.francetelecom.admindm.model)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.francetelecom.admindm.persist)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=com.francetelecom.admindm.soap)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.kxml2.kdom)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.xmlpull.v1)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+  </resource>
+</repository>

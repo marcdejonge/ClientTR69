@@ -1,0 +1,19 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for AddObject
+Bundle-Name: ClientTR69 AddObject
+
+Private-Package: \
+	com.francetelecom.acse.modus.demo,\
+	com.francetelecom.model,\
+	com.francetelecom.tr106.gen,\
+	com.francetelecom.tr106.implem,\
+	com.francetelecom.tr157.gen,\
+	com.francetelecom.tr157.implem,\
+	com.francetelecom.tr157.implem.periodicstatistic
+	
+Bundle-Activator: com.francetelecom.admindm.addObject.Activator
