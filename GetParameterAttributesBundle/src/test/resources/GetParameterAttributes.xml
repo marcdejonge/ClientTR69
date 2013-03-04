@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tns:GetParameterAttributes xmlns:tns="urn:dslforum-org:cwmp-1-1" xmlns:tns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:dslforum-org:cwmp-1-1 cwmp-1-1.xsd ">
-  <ParameterNames href="http://tempuri.org" id="idvalue0" tns1:offset="" tns:arrayType="">
-    <string>string</string>
-    <string>string2</string>
-  </ParameterNames>
-</tns:GetParameterAttributes>

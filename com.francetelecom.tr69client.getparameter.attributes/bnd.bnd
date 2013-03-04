@@ -1,0 +1,11 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for GetParameterAttributes
+Bundle-Name: ClientTR69 GetParameterAttributes
+
+Private-Package: com.francetelecom.admindm.getParameterAttributes
+Bundle-Activator: com.francetelecom.admindm.getParameterAttributes.Activator
