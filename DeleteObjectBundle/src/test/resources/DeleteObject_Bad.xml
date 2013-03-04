@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tns:DeleteObject xmlns:tns="urn:dslforum-org:cwmp-1-1" xmlns:tns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:dslforum-org:cwmp-1-1 cwmp-1-1.xsd ">
-  
-</tns:DeleteObject>
