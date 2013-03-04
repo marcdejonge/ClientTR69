@@ -1,4 +1,0 @@
-pom.xml
-src
-target
-toto.txt

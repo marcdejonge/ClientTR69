@@ -1,31 +1,41 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1362407909103' name='com.francetelecom.tr69client.addobject' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1362408251498' name='com.francetelecom.tr69client.download' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='com.francetelecom.tr69client.addobject'/>
+      <attribute name='osgi.identity' value='com.francetelecom.tr69client.download'/>
       <attribute name='type' value='osgi.bundle'/>
       <attribute name='version' type='Version' value='1.1.0'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='037db52ca820fb1799fedf624d13fad6b6cfaa3c2fc78db91bd0d5fa46432916'/>
-      <attribute name='url' value='generated/com.francetelecom.tr69client.addobject.jar'/>
-      <attribute name='size' type='Long' value='16094'/>
+      <attribute name='osgi.content' value='21af97e92388ffd8e2d75918de370cebb00dc293d40bd06ead0688762097195f'/>
+      <attribute name='url' value='generated/com.francetelecom.tr69client.download.jar'/>
+      <attribute name='size' type='Long' value='84629'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='com.francetelecom.tr69client.addobject'/>
+      <attribute name='osgi.wiring.bundle' value='com.francetelecom.tr69client.download'/>
       <attribute name='bundle-version' type='Version' value='1.1.0'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='com.francetelecom.tr69client.addobject'/>
+      <attribute name='osgi.wiring.host' value='com.francetelecom.tr69client.download'/>
       <attribute name='bundle-version' type='Version' value='1.1.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='com.francetelecom.admindm.download.api'/>
+      <attribute name='version' type='Version' value='1.1.0'/>
+      <attribute name='bundle-symbolic-name' value='com.francetelecom.tr69client.download'/>
+      <attribute name='bundle-version' type='Version' value='1.1.0'/>
+      <directive name='uses' value='com.francetelecom.admindm.soap,com.francetelecom.admindm.api,org.kxml2.kdom,com.francetelecom.admindm.model'/>
     </capability>
     <capability namespace='bndtools.workspace'>
       <attribute name='bndtools.workspace' value='file:/C:/Projects/FlexiblePowerSuite/workspace/ClientTR69'/>
-      <attribute name='project.path' value='/com.francetelecom.tr69client.addobject'/>
+      <attribute name='project.path' value='/com.francetelecom.tr69client.download'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=com.francetelecom.admindm.api)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=com.francetelecom.admindm.download.api)'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=com.francetelecom.admindm.model)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>

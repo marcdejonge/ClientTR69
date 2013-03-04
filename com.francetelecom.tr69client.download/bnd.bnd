@@ -1,0 +1,13 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for Download
+Bundle-Name: ClientTR69 Download
+
+Export-Package: com.francetelecom.admindm.download.api
+
+Private-Package: com.francetelecom.admindm.download
+Bundle-Activator: com.francetelecom.admindm.download.Activator

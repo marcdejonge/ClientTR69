@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1362405181474' name='com.francetelecom.tr69client.persist' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1362407905340' name='com.francetelecom.tr69client.persist' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='com.francetelecom.tr69client.persist'/>
@@ -7,9 +7,9 @@
       <attribute name='version' type='Version' value='1.1.0'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='d59a38333dd7e4e3b6c19b424e01c4442f69dbf7bb642ae08a9ce029ffab278a'/>
+      <attribute name='osgi.content' value='f06d1e91af8a8965d7d9922a0fc832fe7c4b7a0f1822c9701fe4abc0e67a837a'/>
       <attribute name='url' value='generated/com.francetelecom.tr69client.persist.jar'/>
-      <attribute name='size' type='Long' value='3486'/>
+      <attribute name='size' type='Long' value='3485'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>

@@ -1,0 +1,12 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest,\
+	com.francetelecom.tr69client.download;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for Apply
+Bundle-Name: ClientTR69 Apply
+
+Private-Package: com.francetelecom.admindm.apply
+Bundle-Activator: com.francetelecom.admindm.apply.Activator
