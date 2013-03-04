@@ -1,0 +1,11 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for GetRPCMethods
+Bundle-Name: ClientTR69 GetRPCMethods
+
+Private-Package: com.francetelecom.admindm.getRPCMethods
+Bundle-Activator: com.francetelecom.admindm.getRPCMethods.Activator
