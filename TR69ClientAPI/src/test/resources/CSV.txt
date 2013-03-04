@@ -1,6 +1,0 @@
-1 Vendor Configuration File=CSV.txt
-2 Vendor Log File=./data/log
-
-X ORANGE DataModel File=./data/test
-X ORANGE Usine File=
-X ORANGE Data Save File=
