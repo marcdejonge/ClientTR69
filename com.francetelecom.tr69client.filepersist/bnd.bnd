@@ -1,0 +1,12 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest,\
+	com.francetelecom.tr69client.persist;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for persisting to file
+Bundle-Name: ClientTR69 FilePersist
+
+Private-Package: com.francetelecom.admindm.persist.file
+Bundle-Activator: com.francetelecom.admindm.persist.file.Activator

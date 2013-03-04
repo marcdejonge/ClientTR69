@@ -24,7 +24,9 @@ package com.francetelecom.admindm.persist.file;
 import java.io.Serializable;
 
 public class PersistElement implements Serializable {
-    private final String key;
+	private static final long serialVersionUID = -7843013882435346259L;
+
+	private final String key;
     private final String[] subscribers; 
     private final int notification;
     private final Object value;
