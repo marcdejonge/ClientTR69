@@ -11,4 +11,4 @@ Export-Package: com.francetelecom.admindm.download.api
 
 Private-Package: com.francetelecom.admindm.download
 Service-Component: com.francetelecom.admindm.download.*
-Bundle-Version: 1.1.0
+Bundle-Version: 1.1.1
