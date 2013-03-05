@@ -26,6 +26,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.EventBehavior;
 import com.francetelecom.admindm.api.EventCode;
 import com.francetelecom.admindm.api.Log;
@@ -40,28 +43,23 @@ import com.francetelecom.admindm.soap.SetParamValuesFaultEncoder;
 /**
  * The Class RPCMethodMng.
  */
+@Component
 public final class RPCMethodMng implements RPCMethodMngService {
-    /** The instance. */
-    private static RPCMethodMng instance = new RPCMethodMng();
-    /**
-     * Gets the single instance of RPCMethodMng.
-     * @return single instance of RPCMethodMng
-     */
-    public static RPCMethodMng getInstance() {
-        return instance;
-    }
+	private static RPCMethodMng instance;
+	
     /** The map eventname event behavior. */
-    private Map mapEventnameEventBehavior = new HashMap();
+    private Map<String, EventBehavior> mapEventnameEventBehavior = new HashMap<String, EventBehavior>();
     /** The map name rpc encoder. */
-    private Map mapNameRPCEncoder = new HashMap();
+    private Map<String, RPCEncoder> mapNameRPCEncoder = new HashMap<String, RPCEncoder>();
     /** The map name rpc decoder. */
-    private Map mapNameRPCDecoder = new HashMap();
+    private Map<String, RPCDecoder> mapNameRPCDecoder = new HashMap<String, RPCDecoder>();
     /** The ls rpc methods. */
-    private List lsRPCMethods = new ArrayList();
+    private List<String> lsRPCMethods = new ArrayList<String>();
     /**
      * Instantiates a new rPC method mng.
      */
-    private RPCMethodMng() {
+    public RPCMethodMng() {
+    	instance = this;
         registerRPCEncoder("Fault", new FaultEncoder());
         registerRPCEncoder("SetParamValuesFault",
                 new SetParamValuesFaultEncoder());
@@ -190,7 +188,7 @@ public final class RPCMethodMng implements RPCMethodMngService {
      */
     public RPCEncoder findRPCMethodEncoder(final String value) {
         RPCEncoder result;
-        result = (RPCEncoder) instance.mapNameRPCEncoder.get(value);
+        result = mapNameRPCEncoder.get(value);
         if (result == null) {
             Log.error("unable to find encoder for: " + value);
         }
@@ -203,7 +201,7 @@ public final class RPCMethodMng implements RPCMethodMngService {
      */
     public RPCDecoder findRPCMethodDecoder(final String value) {
         RPCDecoder result;
-        result = (RPCDecoder) instance.mapNameRPCDecoder.get(value);
+        result = mapNameRPCDecoder.get(value);
         if (result == null) {
             Log.error("unable to find decoder for: " + value);
         }
@@ -213,7 +211,7 @@ public final class RPCMethodMng implements RPCMethodMngService {
      * Gets the rpc method.
      * @return the RPC method
      */
-    public List getRPCMethod() {
+    public List<String> getRPCMethod() {
         return lsRPCMethods;
     }
     /**
@@ -232,14 +230,14 @@ public final class RPCMethodMng implements RPCMethodMngService {
      * Gets the map eventname event behavior.
      * @return the map eventname event behavior
      */
-    public static Map getMapEventnameEventBehavior() {
-        Set entry = instance.mapEventnameEventBehavior.keySet();
-        Iterator it = entry.iterator();
+    public static Map<String, EventBehavior> getMapEventnameEventBehavior() {
+        Set<String> entry = instance.mapEventnameEventBehavior.keySet();
+        Iterator<String> it = entry.iterator();
         String key;
         EventBehavior eb;
         while (it.hasNext()) {
-            key = (String) it.next();
-            eb = (EventBehavior) instance.mapEventnameEventBehavior.get(key);
+            key = it.next();
+            eb = instance.mapEventnameEventBehavior.get(key);
             eb.setCount(0);
         }
         return instance.mapEventnameEventBehavior;
@@ -249,6 +247,6 @@ public final class RPCMethodMng implements RPCMethodMngService {
      * @param name the name
      */
     public void unregisterEventBehavior(final String name) {
-        instance.mapEventnameEventBehavior.remove(name);
+        mapEventnameEventBehavior.remove(name);
     }
 }

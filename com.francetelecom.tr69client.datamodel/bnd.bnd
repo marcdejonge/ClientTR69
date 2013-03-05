@@ -16,5 +16,5 @@ Private-Package: \
 	com.francetelecom.tr157.implem,\
 	com.francetelecom.tr157.implem.periodicstatistic
 	
-Bundle-Activator: com.francetelecom.admindm.addObject.Activator
+Service-Component: com.francetelecom.model.*
 Bundle-Version: 1.1.0

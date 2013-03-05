@@ -129,7 +129,7 @@ public final class FilePersist implements IPersist {
      * @see com.francetelecom.admindm.persist.IPersist#persistParameterAttribute(java.lang.String,
      *      java.lang.String[], int)
      */
-    public void persist(final String key, final String[] subscribers,
+    public synchronized void persist(final String key, final String[] subscribers,
             final int notification, final Object value, final int type) {
         mapKey.put(key, new PersistElement(key, subscribers, notification,
                 value));

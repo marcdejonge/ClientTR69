@@ -21,10 +21,13 @@
  * Author : Orange Labs R&D O.Beyler
  */
 package com.francetelecom.admindm.download;
-import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.BundleException;
-import org.osgi.framework.ServiceReference;
+
+import aQute.bnd.annotation.component.Activate;
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Deactivate;
+import aQute.bnd.annotation.component.Reference;
+
 import com.francetelecom.admindm.api.EventBehavior;
 import com.francetelecom.admindm.api.EventCode;
 import com.francetelecom.admindm.api.Log;
@@ -39,11 +42,8 @@ import com.francetelecom.admindm.download.api.UploadResponse;
 /**
  * The Class Activator.
  */
-public final class Activator implements BundleActivator {
-    /** The RPC method mng service ref. */
-    private ServiceReference rpcMethodMngServiceRef = null;
-    /** The RPC method mng service ref. */
-    private ServiceReference dataServiceRef = null;
+@Component
+public final class Activator {
     /** The Constant EVT_BEHAVIOR_M_DOWNLOAD. */
     private static final EventBehavior EVT_BEHAVIOR_M_DOWNLOAD =
         new EventBehavior(
@@ -52,8 +52,15 @@ public final class Activator implements BundleActivator {
     private static final EventBehavior EVT_BEHAVIOR_TRANSFER_COMPLETE =
         new EventBehavior(
             true, EventCode.ALWAYS_RETRY, TransferCompleteResponse.NAME);
+    
     /** The rpc mng. */
     private RPCMethodMngService rpcMng;
+    
+    @Reference
+    public void setRpcMng(RPCMethodMngService rpcMng) {
+		this.rpcMng = rpcMng;
+	}
+    
     /** The listener. */
     private ApplyServiceListener listener = null;
     /** The engine. */
@@ -63,8 +70,8 @@ public final class Activator implements BundleActivator {
      * @param context the context
      * @throws Exception the exception
      */
+    @Activate
     public void start(final BundleContext context) throws Exception {        
-        rpcMng = getRPCMng(context);
         // Register new type of event behavior to help the engine
         rpcMng.registerEventBehavior(EventCode.M_DOWNLOAD,
                 EVT_BEHAVIOR_M_DOWNLOAD);
@@ -91,40 +98,23 @@ public final class Activator implements BundleActivator {
         context.addServiceListener(listener);
         Log.info("Start RPC Method Download");
     }
-    /**
-     * Gets the rpc mng.
-     * @param context the context
-     * @return the RPC mng
-     * @throws BundleException the bundle exception
-     */
-    private RPCMethodMngService getRPCMng(final BundleContext context)
-            throws BundleException {
-        rpcMethodMngServiceRef = context
-                .getServiceReference(RPCMethodMngService.class.getName());
-        if (rpcMethodMngServiceRef == null) {
-            throw new BundleException(RPCMethodMngService.class.getName());
-        }
-        return (RPCMethodMngService) context
-                .getService(rpcMethodMngServiceRef);
-    }
+
     /**
      * Stop.
      * @param context the context
      * @throws Exception the exception
      */
+    @Deactivate
     public void stop(final BundleContext context) throws Exception {
         listener.stop();
         context.removeServiceListener(listener);
-        if (rpcMng != null) {
-            rpcMng.unregisterRPCMethod(Download.NAME);
-            rpcMng.unregisterRPCEncoder(DownloadResponse.NAME);
-            rpcMng.unregisterRPCDecoder(Download.NAME);
-            rpcMng.unregisterRPCEncoder(TransferComplete.NAME);
-            rpcMng.unregisterRPCDecoder(TransferCompleteResponse.NAME);
-            rpcMng.unregisterEventBehavior(EventCode.M_DOWNLOAD);
-            rpcMng.unregisterEventBehavior(EventCode.TRANSFER_COMPLETE);
-        }
-        context.ungetService(rpcMethodMngServiceRef);
-        context.ungetService(dataServiceRef);
+
+        rpcMng.unregisterRPCMethod(Download.NAME);
+        rpcMng.unregisterRPCEncoder(DownloadResponse.NAME);
+        rpcMng.unregisterRPCDecoder(Download.NAME);
+        rpcMng.unregisterRPCEncoder(TransferComplete.NAME);
+        rpcMng.unregisterRPCDecoder(TransferCompleteResponse.NAME);
+        rpcMng.unregisterEventBehavior(EventCode.M_DOWNLOAD);
+        rpcMng.unregisterEventBehavior(EventCode.TRANSFER_COMPLETE);
     }
 }

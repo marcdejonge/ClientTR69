@@ -47,12 +47,12 @@ public final class Parameter extends Observable {
      * Fault exception. Classic call back is check the minimum or the maximum
      * value allowed.
      */
-    private List lsCheckCallBack = new ArrayList();
+    private List<CheckCallBack> lsCheckCallBack = new ArrayList<CheckCallBack>();
     /**
      * Gets the list of check call back.
      * @return the list of check call back
      */
-    public List getLsCheckCallBack() {
+    public List<CheckCallBack> getLsCheckCallBack() {
         return lsCheckCallBack;
     }
     /**
@@ -630,9 +630,9 @@ public final class Parameter extends Observable {
      * @throws Fault the fault
      */
     public void check(final Object pValue) throws Fault {
-        Iterator it = lsCheckCallBack.iterator();
+        Iterator<CheckCallBack> it = lsCheckCallBack.iterator();
         while (it.hasNext()) {
-            CheckCallBack cb = (CheckCallBack) it.next();
+            CheckCallBack cb = it.next();
             cb.check(pValue);
         }
     }

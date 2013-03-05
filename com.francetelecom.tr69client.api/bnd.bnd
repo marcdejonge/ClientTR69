@@ -15,5 +15,5 @@ Export-Package: \
 	com.francetelecom.admindm.stunclient
 	
 Private-Package: com.francetelecom.admindm
-Bundle-Activator: com.francetelecom.admindm.Activator
+Service-Component: com.francetelecom.admindm.*
 Bundle-Version: 1.1.0

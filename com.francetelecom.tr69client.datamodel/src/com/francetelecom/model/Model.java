@@ -26,6 +26,9 @@ import java.util.List;
 
 import org.osgi.service.upnp.UPnPDevice;
 
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
 import com.francetelecom.acse.modus.demo.X_ORANGE_ServicesToInstall;
 import com.francetelecom.admindm.api.IModel;
 import com.francetelecom.admindm.model.IParameterData;
@@ -43,6 +46,7 @@ import com.francetelecom.tr157.implem.PeriodicStatisticsImpl;
 import com.francetelecom.tr157.implem.SampleSetImpl;
 //import com.francetelecom.tr157.implem.UPnPImp;
 
+@Component(properties="ROOT_MODEL=true")
 public class Model implements IModel {
 
 	/** The data. */
@@ -57,7 +61,7 @@ public class Model implements IModel {
 	public Model() {
 	}
 
-	private List profiles = new ArrayList();
+	private List<String> profiles = new ArrayList<String>();
 
 	/**
 	 * Sets the data.
@@ -186,7 +190,7 @@ public class Model implements IModel {
 	 * 
 	 * @see com.francetelecom.admindm.api.IModel#getListImplementedProfile()
 	 */
-	public List getListImplementedProfile() {
+	public List<String> getListImplementedProfile() {
 		return profiles;
 	}
 
@@ -196,6 +200,7 @@ public class Model implements IModel {
 	 * @param upnpDevice
 	 *            the upnp device
 	 */
+	@Reference(dynamic=true, multiple=true, optional=true)
 	public void addUPnPDevice(UPnPDevice upnpDevice) {
 		discovery.addUPnPDevice(upnpDevice);
 	}

@@ -51,11 +51,11 @@ public final class ParameterData extends Observable implements IParameterData,
     /** The device id. */
     private DeviceIdStruct deviceId;
     /** The list of parameters. */
-    private List lsParameters;
+    private List<Parameter> lsParameters;
     /** The list of events. */
-    private List lsEvents;
+    private List<EventStruct> lsEvents;
     /** The list of outgoing request. */
-    private List lsOutgoingRequest;
+    private List<RPCMethod> lsOutgoingRequest;
     /** The event file. */
     private File eventFile;
     /** root of the data model. */
@@ -74,9 +74,9 @@ public final class ParameterData extends Observable implements IParameterData,
      * @param persist the new persist
      */
     public void setPersist(IPersist persist) {
-        Iterator it = lsParameters.iterator();
+        Iterator<Parameter> it = lsParameters.iterator();
         while (it.hasNext()) {
-            Parameter param = (Parameter) it.next();
+            Parameter param = it.next();
             param.setPersist(persist);
         }
         this.persist = persist;
@@ -92,7 +92,7 @@ public final class ParameterData extends Observable implements IParameterData,
      * Gets the list of outgoing request.
      * @return the list of outgoing request
      */
-    public List getLsOutgoingRequest() {
+    public List<RPCMethod> getLsOutgoingRequest() {
         return lsOutgoingRequest;
     }
     /** The parameter key. */
@@ -102,15 +102,15 @@ public final class ParameterData extends Observable implements IParameterData,
      */
     public ParameterData() {
         deviceId = new DeviceIdStruct(this);
-        lsParameters = Collections.synchronizedList(new ArrayList());
-        lsEvents = Collections.synchronizedList(new ArrayList());
-        lsOutgoingRequest = Collections.synchronizedList(new ArrayList());
+        lsParameters = Collections.synchronizedList(new ArrayList<Parameter>());
+        lsEvents = Collections.synchronizedList(new ArrayList<EventStruct>());
+        lsOutgoingRequest = Collections.synchronizedList(new ArrayList<RPCMethod>());
     }
     /**
      * Gets the parameter iterator.
      * @return the parameter iterator
      */
-    public Iterator getParameterIterator() {
+    public Iterator<Parameter> getParameterIterator() {
         return lsParameters.iterator();
     }
     /** The is model loaded. */
@@ -201,11 +201,11 @@ public final class ParameterData extends Observable implements IParameterData,
         parameter.setBackValue(param.getBackValue());
         parameter.setImmediateChanges(param.isImmediateChanges());
         parameter.setMandatoryNotification(param.isMandatoryNotification());
-        List ls = parameter.getLsCheckCallBack();
+        List<CheckCallBack> ls = parameter.getLsCheckCallBack();
         ls.clear();
-        Iterator it = ls.iterator();
+        Iterator<CheckCallBack> it = ls.iterator();
         while (it.hasNext()) {
-            parameter.addCheck((CheckCallBack) it.next());
+            parameter.addCheck(it.next());
         }
         parameter.setNotification(param.getNotification());
         parameter.setState(param.getState());
@@ -221,8 +221,8 @@ public final class ParameterData extends Observable implements IParameterData,
      * @return the list
      * @throws Fault the fault
      */
-    public List extractParameterList(final String searchName) throws Fault {
-        List lsParam = new ArrayList();
+    public List<Parameter> extractParameterList(final String searchName) throws Fault {
+        List<Parameter> lsParam = new ArrayList<Parameter>();
         String name;
         Parameter param = getParameter(searchName);
         if (param == null && !"".equals(searchName)) {
@@ -233,9 +233,9 @@ public final class ParameterData extends Observable implements IParameterData,
             throw new Fault(FaultUtil.FAULT_9005, error.toString());
         }
         if ("".equals(searchName)|(searchName != null && searchName.endsWith("."))) {
-            Iterator it = lsParameters.iterator();
+            Iterator<Parameter> it = lsParameters.iterator();
             while (it.hasNext()) {
-                param = (Parameter) it.next();
+                param = it.next();
                 name = param.getName();
                 if (name != null && name.startsWith(searchName)) {
                     lsParam.add(param);
@@ -252,10 +252,10 @@ public final class ParameterData extends Observable implements IParameterData,
      * @return the list
      * @throws Fault the fault
      */
-    public List extractParameterList(final String[] parameterNames)
+    public List<Parameter> extractParameterList(final String[] parameterNames)
             throws Fault {
-        List result = new ArrayList();
-        List resultPartial;
+        List<Parameter> result = new ArrayList<Parameter>();
+        List<Parameter> resultPartial;
         for (int i = 0; i < parameterNames.length; i++) {
             resultPartial = extractParameterList(parameterNames[i]);
             while (!resultPartial.isEmpty()) {
@@ -291,9 +291,9 @@ public final class ParameterData extends Observable implements IParameterData,
                     inputstream = new FileInputStream(eventFile);
                     p = new ObjectInputStream(inputstream);
                     int nb = p.readInt();
-                    lsEvents = new ArrayList();
+                    lsEvents = new ArrayList<EventStruct>();
                     for (int i = 0; i < nb; i++) {
-                        lsEvents.add(p.readObject());
+                        lsEvents.add((EventStruct) p.readObject());
                     }
                 } catch (ClassNotFoundException e) {
                     StringBuffer error = new StringBuffer(
@@ -397,7 +397,7 @@ public final class ParameterData extends Observable implements IParameterData,
      * Gets the event iterator.
      * @return the event iterator
      */
-    public Iterator getEventIterator() {
+    public Iterator<EventStruct> getEventIterator() {
         return lsEvents.iterator();
     }
     /**
@@ -487,7 +487,7 @@ public final class ParameterData extends Observable implements IParameterData,
             }
         }
     }
-    private Set setParamChanged = new HashSet();
+    private Set<Parameter> setParamChanged = new HashSet<Parameter>();
     
     /**
      * To string (very useful for debug).
@@ -495,10 +495,10 @@ public final class ParameterData extends Observable implements IParameterData,
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        Iterator it = lsParameters.iterator();
+        Iterator<Parameter> it = lsParameters.iterator();
         StringBuffer buffer = new StringBuffer("");
         while (it.hasNext()) {
-            Parameter param = (Parameter) it.next();
+            Parameter param = it.next();
             buffer.append(param.getName());
             if (param.getType()!=ParameterType.ANY){
             for (int i = param.getName().length(); i < 70; i++) {
@@ -518,7 +518,7 @@ public final class ParameterData extends Observable implements IParameterData,
         return buffer.toString();
     }
     
-    public Set getSetParamChanged() {
+    public Set<Parameter> getSetParamChanged() {
         return setParamChanged;
     }
 }
