@@ -26,7 +26,6 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
 
 import com.francetelecom.admindm.api.Log;
-import com.francetelecom.admindm.download.api.IApplyAction;
 import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class BundleApply.
