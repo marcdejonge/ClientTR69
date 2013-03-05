@@ -1,0 +1,11 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	com.francetelecom.tr69client.api;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for OSGi
+Bundle-Name: ClientTR69 OSGi
+
+Private-Package: com.francetelecom.admindm.osgi
+Bundle-Activator: com.francetelecom.admindm.osgi.Activator

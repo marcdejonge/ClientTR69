@@ -24,19 +24,12 @@ package com.francetelecom.admindm.osgi;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
-import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceListener;
-import org.osgi.framework.ServiceReference;
 import com.francetelecom.admindm.api.Log;
-import com.francetelecom.admindm.model.IParameterData;
 /**
  * The Class Activator.
  */
 public final class Activator implements BundleActivator {
-    /** The RPC method mng service ref. */
-    private ServiceReference dataServiceRef = null;
-    
-    
     private ServiceListener serviceListener;
     /**
      * Start.
