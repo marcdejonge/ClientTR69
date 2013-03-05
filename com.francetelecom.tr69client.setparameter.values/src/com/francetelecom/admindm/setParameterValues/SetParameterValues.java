@@ -28,7 +28,6 @@ import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.Session;
 import com.francetelecom.admindm.model.IParameterData;
 import com.francetelecom.admindm.model.Parameter;
-import com.francetelecom.admindm.model.ParameterType;
 import com.francetelecom.admindm.model.ParameterValueStruct;
 import com.francetelecom.admindm.soap.Fault;
 import com.francetelecom.admindm.soap.FaultUtil;
