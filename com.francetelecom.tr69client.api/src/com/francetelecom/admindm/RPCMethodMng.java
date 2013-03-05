@@ -36,7 +36,9 @@ import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.RPCMethodMngService;
+import com.francetelecom.admindm.inform.InformEncoder;
 import com.francetelecom.admindm.inform.InformResponse;
+import com.francetelecom.admindm.inform.InformResponseDecoder;
 import com.francetelecom.admindm.soap.FaultDecoder;
 import com.francetelecom.admindm.soap.FaultEncoder;
 import com.francetelecom.admindm.soap.SetParamValuesFaultEncoder;
@@ -64,6 +66,8 @@ public final class RPCMethodMng implements RPCMethodMngService {
         registerRPCEncoder("SetParamValuesFault",
                 new SetParamValuesFaultEncoder());
         registerRPCDecoder("Fault", new FaultDecoder());
+        registerRPCEncoder(InformResponse.NAME, new InformEncoder());
+        registerRPCDecoder(InformResponse.NAME, new InformResponseDecoder());
         registerEventBehavior(EventCode.BOOTSTRAP, new EventBehavior(true,
                 EventCode.DISCARD_OTHER_EVENTS, InformResponse.NAME));
         registerEventBehavior(EventCode.BOOT, new EventBehavior(true,

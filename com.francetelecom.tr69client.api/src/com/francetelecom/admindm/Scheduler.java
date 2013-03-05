@@ -21,6 +21,7 @@
  */
 package com.francetelecom.admindm;
 
+import aQute.bnd.annotation.component.Activate;
 import aQute.bnd.annotation.component.Component;
 import aQute.bnd.annotation.component.Reference;
 
@@ -53,6 +54,7 @@ public final class Scheduler {
 	private ParameterData data = new ParameterData();
     private BundleContext context;
     
+    @Activate
     public void activate(final BundleContext context) {
 	    this.context = context;
 	    data.setEventFile(context.getDataFile("Events.data"));
