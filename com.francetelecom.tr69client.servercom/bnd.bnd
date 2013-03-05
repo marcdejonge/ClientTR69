@@ -10,3 +10,4 @@ Bundle-Name: ClientTR69 Server Communication
 
 Private-Package: com.francetelecom.admindm.com
 Bundle-Activator: com.francetelecom.admindm.com.Activator
+Bundle-Version: 1.1.0

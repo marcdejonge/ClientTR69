@@ -9,3 +9,4 @@ Bundle-Name: ClientTR69 AddObject
 
 Private-Package: com.francetelecom.admindm.addObject
 Bundle-Activator: com.francetelecom.admindm.addObject.Activator
+Bundle-Version: 1.1.0

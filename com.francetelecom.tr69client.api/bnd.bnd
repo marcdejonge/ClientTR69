@@ -16,3 +16,4 @@ Export-Package: \
 	
 Private-Package: com.francetelecom.admindm
 Bundle-Activator: com.francetelecom.admindm.Activator
+Bundle-Version: 1.1.0

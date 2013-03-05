@@ -10,3 +10,4 @@ Bundle-Name: ClientTR69 Apply
 
 Private-Package: com.francetelecom.admindm.apply
 Bundle-Activator: com.francetelecom.admindm.apply.Activator
+Bundle-Version: 1.1.0

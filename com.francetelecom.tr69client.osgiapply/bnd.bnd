@@ -10,3 +10,4 @@ Bundle-Name: ClientTR69 OSGi Apply
 
 Private-Package: com.francetelecom.admindm.osgi.apply
 Bundle-Activator: com.francetelecom.admindm.osgi.apply.Activator
+Bundle-Version: 1.1.0

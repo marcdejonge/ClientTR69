@@ -7,3 +7,4 @@ Bundle-Description: Definition of interface for Persistance for TR69 Client API
 Bundle-Name: ClientTR69 Persist
 
 Export-Package: com.francetelecom.admindm.persist
+Bundle-Version: 1.1.0

@@ -9,3 +9,4 @@ Bundle-Name: ClientTR69 SetParameterAttributes
 
 Private-Package: com.francetelecom.admindm.setParameterAttributes
 Bundle-Activator: com.francetelecom.admindm.setParameterAttributes.Activator
+Bundle-Version: 1.1.0

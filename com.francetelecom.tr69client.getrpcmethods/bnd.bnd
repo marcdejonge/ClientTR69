@@ -9,3 +9,4 @@ Bundle-Name: ClientTR69 GetRPCMethods
 
 Private-Package: com.francetelecom.admindm.getRPCMethods
 Bundle-Activator: com.francetelecom.admindm.getRPCMethods.Activator
+Bundle-Version: 1.1.0

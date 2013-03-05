@@ -10,3 +10,4 @@ Bundle-Name: ClientTR69 FilePersist
 
 Private-Package: com.francetelecom.admindm.persist.file
 Bundle-Activator: com.francetelecom.admindm.persist.file.Activator
+Bundle-Version: 1.1.0

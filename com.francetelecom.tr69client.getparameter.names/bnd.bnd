@@ -9,3 +9,4 @@ Bundle-Name: ClientTR69 GetParameterNames
 
 Private-Package: com.francetelecom.admindm.getParameterNames
 Bundle-Activator: com.francetelecom.admindm.getParameterNames.Activator
+Bundle-Version: 1.1.0
