@@ -89,8 +89,7 @@ public class ParameterDataServiceListener implements ServiceListener {
 				try {
 					createOSGIRootParameter(data);
 					listener = new OSGIBundleListener(data, updater);
-					SequenceParameter startSequenceParameter = new SequenceParameter(
-							context, data);
+					new SequenceParameter(context, data);
 					context.addBundleListener(listener);
 					bundles = context.getBundles();
 					for (int i = 0; i < bundles.length; i++) {

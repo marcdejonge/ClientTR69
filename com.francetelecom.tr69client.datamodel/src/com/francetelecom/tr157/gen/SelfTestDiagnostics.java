@@ -75,11 +75,6 @@ public class SelfTestDiagnostics  {
         paramResults = createResults();
     }
 
-
-    /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
     /**
     *  
     */

@@ -75,11 +75,6 @@ public class MemoryStatus  {
         paramTotal = createTotal();
     }
 
-
-    /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
     /**
     *  
     */

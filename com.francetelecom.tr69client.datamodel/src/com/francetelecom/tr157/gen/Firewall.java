@@ -77,11 +77,6 @@ public class Firewall  {
         paramLastChange = createLastChange();
     }
 
-
-    /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
     /**
     *  
     */

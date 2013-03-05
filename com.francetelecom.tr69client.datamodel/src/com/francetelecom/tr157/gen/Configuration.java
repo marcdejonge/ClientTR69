@@ -78,10 +78,6 @@ public class Configuration  {
 
 
     /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
-    /**
     *  
     */
     private com.francetelecom.admindm.model.Parameter paramInterfaceNumberOfEntries;

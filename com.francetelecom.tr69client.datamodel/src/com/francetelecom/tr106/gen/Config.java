@@ -78,10 +78,6 @@ public class Config  {
 
 
     /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
-    /**
     * Arbitrary user data that MUST persist across CPE reboots. 
     */
     private com.francetelecom.admindm.model.Parameter paramPersistentData;

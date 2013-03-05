@@ -23,8 +23,6 @@
  */
 package com.francetelecom.tr157.gen;
 import com.francetelecom.admindm.model.*;
-import com.francetelecom.admindm.api.StorageMode;
-import com.francetelecom.admindm.soap.Fault;
 /**
 * Class DownloadAvailability.
 * @author OrangeLabs R&D
@@ -62,12 +60,4 @@ public class DownloadAvailability  {
     public final String getBasePath() {
         return basePath;
     }
-
-
-
-    /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
-
 }

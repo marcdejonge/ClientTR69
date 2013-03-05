@@ -33,9 +33,6 @@ import com.francetelecom.admindm.soap.Fault;
  */
 public class SampleIntervalParameterSetter implements Setter {
 
-	/** The Constant REPORT_START_TIME. */
-	private static final String REPORT_START_TIME = "ReportStartTime";
-	
 	/** The parameter data. */
 	private final IParameterData parameterData;
 

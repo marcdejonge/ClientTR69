@@ -85,10 +85,6 @@ public class LAN  {
 
 
     /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
-    /**
     * Whether the value of MACAddress parameter can be overridden. * When 
     * {{param|MACAddress}} is writable. * When {{false}}, 
     * is not writable, and the default MAC address assigned by the device 

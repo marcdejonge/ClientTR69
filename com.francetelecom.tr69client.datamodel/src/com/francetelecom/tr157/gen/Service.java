@@ -80,11 +80,6 @@ public class Service  {
         paramServer = createServer();
     }
 
-
-    /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
     /**
     *  
     */

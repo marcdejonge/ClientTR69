@@ -4,8 +4,8 @@
 	com.francetelecom.tr69client.api;version=latest
 
 Bundle-Category: implementation
-Bundle-Description: TR69 Client implementation for AddObject
-Bundle-Name: ClientTR69 AddObject
+Bundle-Description: TR69 Client implementation for the DataModel
+Bundle-Name: ClientTR69 DataModel
 
 Private-Package: \
 	com.francetelecom.acse.modus.demo,\

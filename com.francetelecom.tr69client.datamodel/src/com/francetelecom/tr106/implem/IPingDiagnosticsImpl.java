@@ -33,8 +33,6 @@ import com.francetelecom.tr106.gen.IPPingDiagnostics;
  */
 public final class IPingDiagnosticsImpl extends IPPingDiagnostics implements
         Observer {
-    /** The last session id. */
-    private String lastSessionId;
     /**
      * Instantiates a new i ping diagnostics impl.
      * @param data the data

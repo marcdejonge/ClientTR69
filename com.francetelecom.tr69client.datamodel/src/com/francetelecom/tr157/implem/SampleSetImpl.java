@@ -33,7 +33,6 @@ import com.francetelecom.admindm.api.Log;
 import com.francetelecom.admindm.model.IParameterData;
 import com.francetelecom.admindm.model.ParameterType;
 import com.francetelecom.admindm.soap.Fault;
-import com.francetelecom.tr157.gen.Parameter;
 import com.francetelecom.tr157.gen.SampleSet;
 import com.francetelecom.tr157.implem.periodicstatistic.EnableParameterSetter;
 import com.francetelecom.tr157.implem.periodicstatistic.ForceSampleGetter;

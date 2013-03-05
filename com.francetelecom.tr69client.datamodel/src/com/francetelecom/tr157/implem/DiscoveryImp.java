@@ -54,9 +54,6 @@ public class DiscoveryImp extends Discovery {
 	/** The Constant ROOTDEVICE_PATH. */
 	private static final String ROOTDEVICE_PATH = "Services.UPnP.Discovery.RootDevice.";
 
-	/** The Constant DEVICE_PATH. */
-	private static final String DEVICE_PATH = "Services.UPnP.Discovery.Device.";
-
 	/** The Constant SERVICE_PATH. */
 	private static final String SERVICE_PATH = "Services.UPnP.Discovery.Service.";
 
@@ -354,15 +351,6 @@ public class DiscoveryImp extends Discovery {
 	private String getNextRootDevicePath() {
 		return data.getRoot() + ROOTDEVICE_PATH + (rootDeviceMap.size() + 1)
 				+ ".";
-	}
-
-	/**
-	 * Gets the next device path.
-	 * 
-	 * @return the next device path
-	 */
-	private String getNextDevicePath() {
-		return data.getRoot() + DEVICE_PATH + (deviceMap.size() + 1) + ".";
 	}
 
 	/**

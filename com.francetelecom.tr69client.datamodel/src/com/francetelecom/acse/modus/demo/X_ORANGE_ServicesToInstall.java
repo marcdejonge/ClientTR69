@@ -36,16 +36,12 @@ public class X_ORANGE_ServicesToInstall {
 	/** The Services to install. */
 	private Parameter servicesToInstall;
 
-	/** The base path. */
-	private final String basePath;
-
 	/** The parameter data. */
 	private final IParameterData parameterData;
 
 	public X_ORANGE_ServicesToInstall(IParameterData pParameterData,
 			String pBasePath) {
 		parameterData = pParameterData;
-		basePath = pBasePath;
 	}
 
 	/**

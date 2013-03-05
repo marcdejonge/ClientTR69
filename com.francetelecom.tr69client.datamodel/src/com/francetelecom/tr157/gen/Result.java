@@ -80,11 +80,6 @@ public class Result  {
         paramAnswerType = createAnswerType();
     }
 
-
-    /**
-     * Serial ID use for serialize.
-     */
-     private static final long serialVersionUID = 1L;
     /**
     *  
     */
