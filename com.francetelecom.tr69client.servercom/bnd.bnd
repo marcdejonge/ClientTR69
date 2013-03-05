@@ -1,0 +1,12 @@
+-include: ../cnf/base.bnd
+
+-buildpath: ${base-buildpath},\
+	org.apache.commons.codec,\
+	com.francetelecom.tr69client.api;version=latest
+
+Bundle-Category: implementation
+Bundle-Description: TR69 Client implementation for Server Communication
+Bundle-Name: ClientTR69 Server Communication
+
+Private-Package: com.francetelecom.admindm.com
+Bundle-Activator: com.francetelecom.admindm.com.Activator

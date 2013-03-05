@@ -1,9 +1,0 @@
-<?xml version='1.0' ?>
-<env:Envelope xmlns:cwmp="urn:dslforum-org:cwmp-1-0" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
-  <env:Header></env:Header>
-  <env:Body>
-    <cwmp:InformResponse xmlns:cwmp="urn:dslforum-org:cwmp-1-0">
-      <MaxEnvelopes>1</MaxEnvelopes>
-    </cwmp:InformResponse>
-  </env:Body>
-</env:Envelope>
