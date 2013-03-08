@@ -1,6 +1,9 @@
 package com.francetelecom.admindm.reboot;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -8,6 +11,7 @@ import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class RebootDecoder.
  */
+@Component(properties="name=Reboot")
 public class RebootDecoder implements RPCDecoder {
     /**
      * Decode.
