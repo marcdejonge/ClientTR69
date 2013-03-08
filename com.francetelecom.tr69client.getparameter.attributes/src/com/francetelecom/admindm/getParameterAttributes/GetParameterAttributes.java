@@ -73,7 +73,7 @@ public final class GetParameterAttributes implements RPCMethod {
             throw new Fault(FaultUtil.FAULT_9004, FaultUtil.STR_FAULT_9004);
         }
         IParameterData parameterData = session.getParameterData();
-        List lsParameter = parameterData.extractParameterList(parameterNames);
+        List<Parameter> lsParameter = parameterData.extractParameterList(parameterNames);
         GetParameterAttributesResponse response;
         response = new GetParameterAttributesResponse();
         int size = lsParameter.size();

@@ -23,6 +23,9 @@
 package com.francetelecom.admindm.getParameterAttributes;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Soap;
@@ -30,6 +33,7 @@ import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class GetParameterAttributesResponseEncoder.
  */
+@Component(properties="name=GetParameterAttributesResponse")
 public class GetParameterAttributesResponseEncoder implements RPCEncoder {
 	/**
 	 * Encode.

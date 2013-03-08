@@ -24,12 +24,16 @@ package com.francetelecom.admindm.getParameterAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class GetParameterAttributesDecoder.
  */
+@Component(properties="name=GetParameterAttributes")
 public final class GetParameterAttributesDecoder implements RPCDecoder {
     /**
      * Decode.
@@ -40,14 +44,13 @@ public final class GetParameterAttributesDecoder implements RPCDecoder {
     public RPCMethod decode(final Element element) throws Fault {
         GetParameterAttributes gpa = new GetParameterAttributes();
         Element eParameterName = element.getElement("","ParameterNames");
-        List eString = new ArrayList();
+        List<Element> eString = new ArrayList<Element>();
         for (int index = 0;index<eParameterName.getChildCount();index++){
             Element tmp = eParameterName.getElement(index);
             int type = eParameterName.getType(index);
-        if (tmp!=null && type ==Element.ELEMENT
-                && "string".equals(tmp.getName())){
-            eString.add(tmp);
-             }
+            if (tmp != null && type == Element.ELEMENT && "string".equals(tmp.getName())) {
+            	eString.add(tmp);
+            }
         }
         int size = eString.size();
         gpa.setParameterNames(new String[size]);
