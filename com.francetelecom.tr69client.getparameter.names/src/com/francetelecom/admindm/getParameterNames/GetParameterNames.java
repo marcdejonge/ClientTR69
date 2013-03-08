@@ -44,7 +44,7 @@ public final class GetParameterNames implements RPCMethod {
      * A string containing either a complete Parameter name, or a partial path
      * name ParameterPath representing a subset of the name hierarchy. An empty
      * string indicates the top of the name hierarchy. A partial path name MUST
-     * end with a “.” (dot) after the last node name in the hierarchy.<br/>
+     * end with a . (dot) after the last node name in the hierarchy.<br/>
      * Below is an example of a full Parameter name:<br/>
      * InternetGatewayDevice.DeviceInfo.SerialNumber<br/>
      * Below is an example of a partial path name:<br/>
@@ -57,9 +57,9 @@ public final class GetParameterNames implements RPCMethod {
      * and objects that are descendents of the object given by the ParameterPath
      * argument, if any (all levels below the specified object in the object
      * hierarchy). For example, if ParameterPath were
-     * “InternetGatewayDevice.LANDevice.1.Hosts.”, the response would include
+     * InternetGatewayDevice.LANDevice.1.Hosts., the response would include
      * the following (if there were a single instance of Host with instance
-     * number “1”):<br/>
+     * number 1):<br/>
      * InternetGatewayDevice.LANDevice.1.Hosts.<br/>
      * InternetGatewayDevice.LANDevice.1.Hosts.HostNumberOfEntries<br/>
      * InternetGatewayDevice.LANDevice.1.Hosts.Host.<br/>
@@ -74,12 +74,12 @@ public final class GetParameterNames implements RPCMethod {
      * If true, the response MUST contain all Parameters and objects that are
      * next-level children of the object given by the ParameterPath argument, if
      * any. For example, if ParameterPath were
-     * “InternetGatewayDevice.LANDevice.1.Hosts.”, the response would include
+     * InternetGatewayDevice.LANDevice.1.Hosts., the response would include
      * the following:<br/>
      * InternetGatewayDevice.LANDevice.1.Hosts.HostNumberOfEntries<br/>
      * InternetGatewayDevice.LANDevice.1.Hosts.Host.<br/>
      * Or, if ParameterPath were empty, with NextLevel equal true, the response
-     * would list only “InternetGatewayDevice.” (if the CPE is an Internet
+     * would list only InternetGatewayDevice. (if the CPE is an Internet
      * Gateway Device).<br/>
      */
     private boolean nextLevel;
@@ -156,7 +156,7 @@ public final class GetParameterNames implements RPCMethod {
             final String name, final boolean nextLevel,
             final IParameterData parameterData) {
         ParameterInfoStruct[] result = null;
-        List lsParameter = new ArrayList();
+        List<ParameterInfoStruct> lsParameter = new ArrayList<ParameterInfoStruct>();
         Object[] params = parameterData.getParametersArray();
         ParameterInfoStruct pis = null;
         Parameter temp = null;

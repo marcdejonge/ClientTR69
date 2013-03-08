@@ -23,6 +23,9 @@
 package com.francetelecom.admindm.getParameterNames;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -30,6 +33,7 @@ import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class GetParameterNamesDecoder.
  */
+@Component(properties="name=GetParameterNames")
 public class GetParameterNamesDecoder implements RPCDecoder {
     /**
      * Decode.

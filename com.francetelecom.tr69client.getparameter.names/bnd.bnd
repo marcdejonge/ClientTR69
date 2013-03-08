@@ -8,5 +8,5 @@ Bundle-Description: TR69 Client implementation for GetParameterNames
 Bundle-Name: ClientTR69 GetParameterNames
 
 Private-Package: com.francetelecom.admindm.getParameterNames
-Bundle-Activator: com.francetelecom.admindm.getParameterNames.Activator
+Service-Component: com.francetelecom.admindm.getParameterNames.*
 Bundle-Version: 1.1.0
