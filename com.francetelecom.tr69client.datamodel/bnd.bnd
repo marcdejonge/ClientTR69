@@ -17,4 +17,4 @@ Private-Package: \
 	com.francetelecom.tr157.implem.periodicstatistic
 	
 Service-Component: com.francetelecom.model.*
-Bundle-Version: 1.1.1
+Bundle-Version: 1.1.2

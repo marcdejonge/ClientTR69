@@ -9,4 +9,4 @@ Bundle-Name: ClientTR69 Reboot
 
 Private-Package: com.francetelecom.admindm.reboot
 Service-Component: com.francetelecom.admindm.reboot.*
-Bundle-Version: 1.1.0
+Bundle-Version: 1.1.1

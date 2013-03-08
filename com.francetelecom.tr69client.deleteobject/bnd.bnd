@@ -9,4 +9,4 @@ Bundle-Name: ClientTR69 DeleteObject
 
 Private-Package: com.francetelecom.admindm.deleteObject
 Service-Component: com.francetelecom.admindm.deleteObject.*
-Bundle-Version: 1.1.0
+Bundle-Version: 1.1.1

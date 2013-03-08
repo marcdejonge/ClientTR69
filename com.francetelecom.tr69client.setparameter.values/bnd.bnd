@@ -9,4 +9,4 @@ Bundle-Name: ClientTR69 SetParameterValues
 
 Private-Package: com.francetelecom.admindm.setParameterValues
 Service-Component: com.francetelecom.admindm.setParameterValues.*
-Bundle-Version: 1.1.0
+Bundle-Version: 1.1.1
