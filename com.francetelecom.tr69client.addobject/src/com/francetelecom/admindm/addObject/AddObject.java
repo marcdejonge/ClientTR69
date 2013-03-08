@@ -59,7 +59,7 @@ public final class AddObject implements RPCMethod {
         this.parameterKey = pParameterKey;
     }
     /** The map name id. */
-    private Map mapNameId = new HashMap();
+    private Map<String, Long> mapNameId = new HashMap<String, Long>();
     /** The object name. */
     private final String objectName;
     /**
@@ -169,18 +169,19 @@ public final class AddObject implements RPCMethod {
     /**
      * Restore map name id from file.
      */
-    protected void restoreMapNameId() {
+    @SuppressWarnings("unchecked")
+	protected void restoreMapNameId() {
         FileInputStream inputStream = null;
         ObjectInputStream ois = null;
         try {
             inputStream = new FileInputStream(sequenceIdFile);
             ois = new ObjectInputStream(inputStream);
-            mapNameId = (HashMap) ois.readObject();
+            mapNameId = (HashMap<String, Long>) ois.readObject();
         } catch (IOException e) {
             Log.error("Unable to write map sequence", e);
         } catch (ClassNotFoundException e) {
             Log.error("Unable to read map sequence", e);
-            mapNameId = new HashMap();
+            mapNameId = new HashMap<String, Long>();
         } finally {
             if (ois != null) {
                 try {

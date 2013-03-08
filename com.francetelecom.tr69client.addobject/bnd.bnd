@@ -9,5 +9,5 @@ Bundle-Name: ClientTR69 AddObject
 
 Export-Package: com.francetelecom.admindm.addObject
 
-Bundle-Activator: com.francetelecom.admindm.addObject.Activator
+Service-Component: com.francetelecom.admindm.addObject.*
 Bundle-Version: 1.2.0

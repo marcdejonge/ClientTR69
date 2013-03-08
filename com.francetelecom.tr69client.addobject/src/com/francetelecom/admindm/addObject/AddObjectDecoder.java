@@ -23,6 +23,11 @@
 package com.francetelecom.admindm.addObject;
 import java.io.File;
 import org.kxml2.kdom.Element;
+import org.osgi.framework.BundleContext;
+
+import aQute.bnd.annotation.component.Activate;
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -30,16 +35,15 @@ import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class AddObjectDecoder.
  */
+@Component(properties="name=AddObject")
 public class AddObjectDecoder implements RPCDecoder {
-    /** The Constant saveFile. */
-    private final File saveFile;
-    /**
-     * Instantiates a new adds the object decoder.
-     * @param pSaveFile the save file
-     */
-    public AddObjectDecoder(final File pSaveFile) {
-        this.saveFile = pSaveFile;
+    private File saveFile;
+    
+    @Activate
+    public void activate(BundleContext context) {
+    	saveFile = context.getDataFile("mapNameId.data");
     }
+    
     /**
      * Decode.
      * @param element the element

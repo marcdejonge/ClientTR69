@@ -23,12 +23,16 @@
 package com.francetelecom.admindm.addObject;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class AddObjectResponseEncoder.
  */
+@Component(properties="name=AddObjectResponse")
 public class AddObjectResponseEncoder implements RPCEncoder {
     /**
      * Encode.
