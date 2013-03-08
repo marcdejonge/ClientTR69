@@ -61,8 +61,8 @@ public final class SetParameterAttributes implements RPCMethod {
         response = new SetParameterAttributesResponse();
         IParameterData data = session.getParameterData();
         SetParameterAttributesStruct param;
-        List lsSave = new ArrayList();
-        List lsParameters;
+        List<Save> lsSave = new ArrayList<Save>();
+        List<Parameter> lsParameters;
         String name;
         if (parameterList == null || parameterList.length == 0) {
             StringBuffer error = new StringBuffer(FaultUtil.STR_FAULT_9003);
@@ -84,7 +84,7 @@ public final class SetParameterAttributes implements RPCMethod {
                     throw new Fault(FaultUtil.FAULT_9005, error.toString());
                 }
                 while (!lsParameters.isEmpty()) {
-                    Parameter p = (Parameter) lsParameters.remove(0);
+                    Parameter p = lsParameters.remove(0);
                     lsSave.add(new Save(p));
                     setAttribute(p, param);
                 }
@@ -104,10 +104,10 @@ public final class SetParameterAttributes implements RPCMethod {
      * to the end.
      * @param lsSave the ls save
      */
-    protected static void restoreParam(List lsSave) {
+    protected static void restoreParam(List<Save> lsSave) {
         Save save;
         for (int i=lsSave.size()-1;i>= 0;i-- ) {
-            save = (Save) lsSave.get(i);
+            save = lsSave.get(i);
             save.restore();
         }
     }

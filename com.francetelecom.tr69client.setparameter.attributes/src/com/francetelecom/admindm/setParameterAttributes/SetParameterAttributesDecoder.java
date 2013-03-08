@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -35,6 +38,7 @@ import com.francetelecom.admindm.soap.FaultUtil;
 /**
  * The Class SetParameterAttributesDecoder.
  */
+@Component(properties="name=SetParameterAttributes")
 public class SetParameterAttributesDecoder implements RPCDecoder {
     /**
      * Decode.
@@ -47,7 +51,7 @@ public class SetParameterAttributesDecoder implements RPCDecoder {
         Element eParameterList = element.getElement("", "ParameterList");
         int index = eParameterList.indexOf("", "SetParameterAttributesStruct",
                 0);
-        List lsESPAS = new ArrayList();
+        List<Object> lsESPAS = new ArrayList<Object>();
         while (index >= 0) {
             System.out.println("index" + index);
             lsESPAS.add(eParameterList.getChild(index));
@@ -57,7 +61,7 @@ public class SetParameterAttributesDecoder implements RPCDecoder {
         SetParameterAttributesStruct[] tab;
         tab = new SetParameterAttributesStruct[lsESPAS.size()];
         result.setParameterList(tab);
-        Iterator it = lsESPAS.iterator();
+        Iterator<Object> it = lsESPAS.iterator();
         SetParameterAttributesStruct sPAS;
         Element eSPA;
         int i = 0;
@@ -80,7 +84,7 @@ public class SetParameterAttributesDecoder implements RPCDecoder {
                 error.append(": AccessList miss.");
                 throw new Fault(FaultUtil.FAULT_9003, error.toString());
             }
-            List eString = new ArrayList();
+            List<Object> eString = new ArrayList<Object>();
             index = eAccessList.indexOf("", "SetParameterAttributesStruct", 0);
             while (index >= 0) {
                 eString.add(eAccessList.getChild(index));

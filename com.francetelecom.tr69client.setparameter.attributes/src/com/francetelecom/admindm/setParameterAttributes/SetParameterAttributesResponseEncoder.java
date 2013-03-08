@@ -24,12 +24,16 @@
 package com.francetelecom.admindm.setParameterAttributes;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class SetParameterAttributesResponseEncoder.
  */
+@Component(properties="name=SetParameterAttributesResponse")
 public class SetParameterAttributesResponseEncoder implements RPCEncoder {
     /**
      * Encode.
