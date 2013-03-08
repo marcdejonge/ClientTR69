@@ -23,6 +23,10 @@
 package com.francetelecom.admindm.getRPCMethods;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.RPCMethodMngService;
@@ -30,18 +34,16 @@ import com.francetelecom.admindm.api.RPCMethodMngService;
 /**
  * The Class GetRPCMethodsDecoder.
  */
+@Component(properties="name=GetRPCMethods")
 public final class GetRPCMethodsDecoder implements RPCDecoder {
     
     /** The mng. */
-    private final RPCMethodMngService mng;
-    
-    /**
-     * The Constructor.
-     * @param pMng the mng
-     */
-    protected GetRPCMethodsDecoder(final RPCMethodMngService pMng) {
-        this.mng = pMng;
-    }
+    private RPCMethodMngService mng;
+ 
+    @Reference
+    public void setMng(RPCMethodMngService mng) {
+		this.mng = mng;
+	}
     
     /**
      * Decode.

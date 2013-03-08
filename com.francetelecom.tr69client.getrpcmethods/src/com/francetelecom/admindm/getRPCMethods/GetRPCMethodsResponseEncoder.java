@@ -21,14 +21,17 @@
  * Author : Orange Labs R&D O.Beyler
  */
 package com.francetelecom.admindm.getRPCMethods;
-import java.util.Iterator;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class GetRPCMethodsResponseEncoder.
  */
+@Component(properties="name=GetRPCMethodsResponse")
 public class GetRPCMethodsResponseEncoder implements RPCEncoder {
     /**
      * Encode.
@@ -48,11 +51,10 @@ public class GetRPCMethodsResponseEncoder implements RPCEncoder {
         value.append("]");
         eMethodList.setAttribute(Soap.getSoapEncNameSpace(),
                 "arrayType", value.toString());
-        Iterator it = grpc.getLsRPCMethods().iterator();
-        while (it.hasNext()) {
+        for(String string : grpc.getLsRPCMethods()) {
             Element e = new Element();
             e.setName("string");
-            e.addChild(Element.TEXT,(String) it.next());
+            e.addChild(Element.TEXT, string);
             eMethodList.addChild(Element.ELEMENT,e);
         }
         return result;

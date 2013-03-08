@@ -53,12 +53,12 @@ public final class GetRPCMethodsResponse implements RPCMethod {
      * Gets the ls rpc methods.
      * @return the ls rpc methods
      */
-    public List getLsRPCMethods() {
-        List result;
+    public List<String> getLsRPCMethods() {
+        List<String> result;
         if (mng != null) {
-            result = mng.getRPCMethod();
+            result = mng.getRPCMethods();
         } else {
-            result = new ArrayList();
+            result = new ArrayList<String>();
         }
         return result;
     }
