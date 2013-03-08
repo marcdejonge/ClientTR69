@@ -86,8 +86,8 @@ public final class DeleteObject implements RPCMethod {
             error.append("' is read only.");
             throw new Fault(FaultUtil.FAULT_9005, error.toString());
         }
-        List lsParam = parameterData.extractParameterList(objectName);
-        Iterator it = lsParam.iterator();
+        List<Parameter> lsParam = parameterData.extractParameterList(objectName);
+        Iterator<Parameter> it = lsParam.iterator();
         while (it.hasNext()) {
             Parameter subParameter = (Parameter) it.next();
             parameterData.deleteParam(subParameter);

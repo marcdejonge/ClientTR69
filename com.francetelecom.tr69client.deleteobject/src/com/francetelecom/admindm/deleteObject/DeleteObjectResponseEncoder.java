@@ -23,12 +23,16 @@
 package com.francetelecom.admindm.deleteObject;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class DeleteObjectResponseEncoder.
  */
+@Component(properties="name=DeleteObjectResponse")
 public final class DeleteObjectResponseEncoder implements RPCEncoder {
     /**
      * Encode.

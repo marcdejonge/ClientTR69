@@ -8,5 +8,5 @@ Bundle-Description: TR69 Client implementation for DeleteObject
 Bundle-Name: ClientTR69 DeleteObject
 
 Private-Package: com.francetelecom.admindm.deleteObject
-Bundle-Activator: com.francetelecom.admindm.deleteObject.Activator
+Service-Component: com.francetelecom.admindm.deleteObject.*
 Bundle-Version: 1.1.0

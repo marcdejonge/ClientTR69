@@ -23,6 +23,9 @@
 package com.francetelecom.admindm.deleteObject;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -31,6 +34,7 @@ import com.francetelecom.admindm.soap.FaultUtil;
 /**
  * The Class DeleteObjectDecoder.
  */
+@Component(properties="name=DeleteObject")
 public class DeleteObjectDecoder implements RPCDecoder {
     /**
      * Decode.
