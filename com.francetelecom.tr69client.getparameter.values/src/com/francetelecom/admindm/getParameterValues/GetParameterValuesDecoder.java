@@ -24,6 +24,9 @@ package com.francetelecom.admindm.getParameterValues;
 import java.util.ArrayList;
 import java.util.List;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.soap.Fault;
@@ -31,6 +34,7 @@ import com.francetelecom.admindm.soap.FaultUtil;
 /**
  * The Class GetParameterValuesDecoder.
  */
+@Component(properties="name=GetParameterValues")
 public class GetParameterValuesDecoder implements RPCDecoder {
     /**
      * Decode.
@@ -47,7 +51,7 @@ public class GetParameterValuesDecoder implements RPCDecoder {
             error.append(": ParameterNames tags is missing.");
             throw new Fault(FaultUtil.FAULT_9003, error.toString());
         }
-        List eString = new ArrayList();
+        List<Object> eString = new ArrayList<Object>();
         for (int index=0;index<eParameterName.getChildCount();index++){
             if ((eParameterName.getType(index)==Element.ELEMENT)&&
                     "string".equals(eParameterName.getElement(index).getName())){

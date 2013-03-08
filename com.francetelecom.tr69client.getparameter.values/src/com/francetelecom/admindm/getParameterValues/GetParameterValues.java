@@ -82,10 +82,10 @@ public final class GetParameterValues implements RPCMethod {
             throw new Fault(FaultUtil.FAULT_9003, error.toString());
         }
         IParameterData parameterData = session.getParameterData();
-        List lsParameter = parameterData.extractParameterList(parameterNames);
+        List<Parameter> lsParameter = parameterData.extractParameterList(parameterNames);
         // count parameter with ANY as type
         int countParameterWithAnyType = 0; // 
-        Iterator it = lsParameter.iterator();
+        Iterator<Parameter> it = lsParameter.iterator();
         Parameter param;
         while (it.hasNext()) {
             param = (Parameter) it.next();
