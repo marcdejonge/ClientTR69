@@ -22,6 +22,10 @@
  */
 package com.francetelecom.admindm.download;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.download.api.IEngine;
@@ -29,16 +33,16 @@ import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class TransferCompleteReponseDecoder.
  */
+@Component(properties="name=TransferCompleteResponse")
 public final class TransferCompleteResponseDecoder implements RPCDecoder {
     /** The engine. */
-    private final IEngine engine;
-    /**
-     * The Constructor.
-     * @param pEngine the engine
-     */
-    public TransferCompleteResponseDecoder(final IEngine pEngine) {
-        this.engine = pEngine;
-    }
+    private IEngine engine;
+    
+    @Reference
+    public void setEngine(IEngine engine) {
+		this.engine = engine;
+	}
+
     /**
      * Decode.
      * @param element the element

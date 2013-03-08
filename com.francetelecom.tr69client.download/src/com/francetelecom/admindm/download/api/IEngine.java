@@ -22,7 +22,6 @@
  */
 
 package com.francetelecom.admindm.download.api;
-import java.io.File;
 import java.util.List;
 
 import com.francetelecom.admindm.model.IParameterData;
@@ -35,49 +34,7 @@ public interface IEngine  extends IEngineService {
      * Gets the last transfer complete.
      * @return the last transfer complete
      */
-    List getLastTransferComplete();
-    /**
-     * Adds the download protocol.
-     * @param protocol the protocol
-     */
-    void addDownloadProtocol(IDownloadProtocol protocol);
-    /**
-     * Adds the upload protocol.
-     * @param protocol the protocol
-     */
-    void addUploadProtocol(IUploadProtocol protocol);
-    /**
-     * Removes the download protocol.
-     * @param protocol the protocol
-     */
-    void removeDownloadProtocol(IDownloadProtocol protocol);
-    /**
-     * Removes the upload protocol.
-     * @param protocol the protocol
-     */
-    void removeUploadProtocol(IUploadProtocol protocol);
-    /**
-     * Removes the all download protocols.
-     */
-    void removeAllDownloadProtocols();
-    /**
-     * Removes the all upload protocols.
-     */
-    void removeAllUploadProtocols();
-    /**
-     * Adds an apply action.
-     * @param action the action
-     */
-    void addApplyAction(final IApplyAction action);
-    /**
-     * Remove an apply action.
-     * @param action the action
-     */
-    void removeApplyAction(final IApplyAction action);
-    /**
-     * Removes all apply actions.
-     */
-    void removeAllApplyActions();
+    List<TransferComplete> getLastTransferComplete();
     /**
      * When the Download task is finished the we remove the download request to
      * the list and set it to lastTransferComplete variable. The
@@ -102,19 +59,6 @@ public interface IEngine  extends IEngineService {
      * @throws Fault the fault
      */
     boolean addUpload(final Upload download) throws Fault;
-    /**
-     * Find protocol availability.
-     * @param download the download
-     * @return the i download protocol
-     * @throws Fault the fault
-     */
-    IDownloadProtocol findProtocolAvailability(final Download download)
-            throws Fault;
-    /**
-     * Sets the data file.
-     * @param pDataFile the new data file
-     */
-    void setDatafile(final File pDataFile);
     /**
      * Restore data.
      */

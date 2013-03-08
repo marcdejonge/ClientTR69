@@ -22,6 +22,10 @@
  */
 package com.francetelecom.admindm.download;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -32,21 +36,16 @@ import com.francetelecom.admindm.soap.FaultUtil;
 /**
  * The Class UploadDecoder.
  */
+@Component(properties="name=Upload")
 public class UploadDecoder implements RPCDecoder {
     /** The engine. */
-    private final IEngine engine;
-    /**
-     * The Constructor.
-     * @param pEngine the engine
-     */
-    public UploadDecoder(final IEngine pEngine) {
-        this.engine = pEngine;
-    }
-    /**
-     * Gets the object.
-     * @param engine the engine
-     * @return the object
-     */
+    private IEngine engine;
+    
+    @Reference
+    public void setEngine(IEngine engine) {
+		this.engine = engine;
+	}
+    
     /**
      * Decode.
      * @param element the element

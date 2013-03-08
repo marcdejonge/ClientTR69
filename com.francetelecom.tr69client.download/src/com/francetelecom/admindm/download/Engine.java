@@ -36,8 +36,16 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
+
+import org.osgi.framework.BundleContext;
+
+import aQute.bnd.annotation.component.Activate;
+import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
+
 import com.francetelecom.admindm.api.FileUtil;
 import com.francetelecom.admindm.api.Log;
+import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.download.api.DelayedTask;
 import com.francetelecom.admindm.download.api.Download;
 import com.francetelecom.admindm.download.api.FaultStruct;
@@ -56,175 +64,185 @@ import com.francetelecom.admindm.soap.FaultUtil;
  * The Class Engine. The aim of is class is to schedule the download or upload.
  * @author Olivier Beyler - OrangeLabs -
  */
+@Component(immediate=true, provide=IEngine.class)
 public final class Engine implements IEngine {
     
-    /** The list apply actions. */
-    private final List lsApplyActions = new ArrayList();
-    
-    /** The Constant Number of millisecond per second. */
-    private static final int NB_MS_PER_SECOND = 1000;
-    
-    /** The data file. */
-    private transient File dataFile = null;
-    
     /** The max transfer queue. */
-    private static final int MAX_TRANSFER_QUEUE = 100;
-    
-    /** The list file transfer queue. */
-    private List lsFileTransferQueue = new ArrayList();
-    
-    /** The parameter data. */
-    private IParameterData parameterData;
-    
-    /**
-     * The last transfer complete. Store the last transfer Complete to re send
-     * it until the transfer response has been receive to be sure that the ACS
-     * is notified of the transfer.
-     */
-    private List lsLastTransferComplete = Collections
-            .synchronizedList(new ArrayList());
+	private static final int MAX_TRANSFER_QUEUE = 100;
+
+	/** The Constant Number of millisecond per second. */
+	private static final int NB_MS_PER_SECOND = 1000;
+
+	/** The list apply actions. */
+    private final List<IApplyAction> lsApplyActions = new ArrayList<IApplyAction>();
     
     /**
-     * Gets the last transfer complete.
-     * @return the last transfer complete
-     */
-    public List getLastTransferComplete() {
-        return lsLastTransferComplete;
-    }
+	 * Adds an apply action.
+	 * @param action the action
+	 */
+	@Reference(dynamic=true, multiple=true, optional=true)
+	public void addApplyAction(final IApplyAction action) {
+	    lsApplyActions.add(action);
+	}
+
+	/**
+	 * Remove an apply action.
+	 * @param action the action
+	 */
+	public void removeApplyAction(final IApplyAction action) {
+	    lsApplyActions.remove(action);
+	}
+
+	/** List protocols available to manage a download request. */
+    private List<IDownloadProtocol> lsDownloadProtocol = new ArrayList<IDownloadProtocol>();
     
     /**
-     * Adds an apply action.
-     * @param action the action
-     */
-    public void addApplyAction(final IApplyAction action) {
-        lsApplyActions.add(action);
-    }
+	 * Adds the download protocol.
+	 * @param protocol the protocol
+	 */
+    @Reference(dynamic=true, multiple=true, optional=true)
+	public void addDownloadProtocol(final IDownloadProtocol protocol) {
+	    lsDownloadProtocol.add(protocol);
+	}
+
+	/**
+	 * Removes the download protocol.
+	 * @param protocol the protocol
+	 */
+	public void removeDownloadProtocol(final IDownloadProtocol protocol) {
+	    lsDownloadProtocol.remove(protocol);
+	}
+
+	/** List protocols available to manage a upload request. */
+    private List<IUploadProtocol> lsUploadProtocol = new ArrayList<IUploadProtocol>();
     
     /**
-     * Remove an apply action.
-     * @param action the action
-     */
-    public void removeApplyAction(final IApplyAction action) {
-        lsApplyActions.remove(action);
-    }
-    
-    /**
-     * Removes the all apply actions.
-     */
-    public void removeAllApplyActions() {
-        lsApplyActions.clear();
-    }
-    
-    /**
-     * When the Download task is finished the we remove the download request to
-     * the list and set it to lastTransferComplete variable. The
-     * lastTransferComplete will only set to null when the a
-     * TransferCompleteResponse is received. The transfer is considered as
-     * successful only if the downloaded file is applied. If it has failed the
-     * file is deleted.
-     * @param downloadTask the download task
-     */
-    public void finishDownloadTask(final DelayedTask downloadTask) {
-        TransferComplete transfer = downloadTask.getTransfer();
-        Download download = downloadTask.getDownload();
-        getLastTransferComplete().add(transfer);
-        lsFileTransferQueue.remove(download);
-        Iterator itAction = lsApplyActions.iterator();
-        boolean isApply = false;
-        String typeFile = download.getFileType();
-        String filename = download.getTargetFileName();
-        boolean needReboot = false;
-        try {
-            while (itAction.hasNext() && !isApply) {
-                IApplyAction action = (IApplyAction) itAction.next();
-                if (action.isApplicable(typeFile)) {
-                    needReboot = action.apply(filename);
-                    isApply = true;
-                }
-            }
-            if (!isApply) {
-                StringBuffer error = new StringBuffer(FaultUtil.STR_FAULT_9010);
-                error.append(": don't know how to apply '");
-                error.append(typeFile);
-                error.append("'");
-                throw new Fault(FaultUtil.FAULT_9010, error.toString());
-            }
-            if (needReboot) {
-                // TODO suggest to reboot
-            }
-        } catch (Fault e) {
-            FaultStruct fault;
-            fault = transfer.getFaultStruct();
-            fault.setFaultCode(e.getFaultcode());
-            fault.setFaultString(e.getFaultstring());
-            File file = new File(filename);
-            file.delete();
-        }
-        Iterator itEvent = transfer.getLsEvent().iterator();
-        while (itEvent.hasNext()) {
-            parameterData.addEvent((EventStruct) itEvent.next());
-        }
-        parameterData.addOutgoingRequest(downloadTask.getTransfer());
-        storeData();
-    }
-    
-    /**
-     * Store data will persist only the lastTranfertComplete queue and the list
-     * of download request. The download requests have to be done even in case
-     * of reboot.
-     */
-    protected void storeData() {
-        try {
-            dataFile.createNewFile();
-            FileOutputStream ostream = new FileOutputStream(dataFile);
-            ObjectOutputStream p = new ObjectOutputStream(ostream);
-            p.writeObject(lsLastTransferComplete);
-            p.writeObject(lsFileTransferQueue);
-            ostream.close();
-        } catch (IOException e) {
-            // should not occurred.
-            Log.error(e.getLocalizedMessage(), e);
-        }
-    }
-    
-    /** List protocols available to manage a download request. */
-    private List lsDownloadProtocol = new ArrayList();
-    
-    /** List protocols available to manage a upload request. */
-    private List lsUploadProtocol = new ArrayList();
-    
-    /**
+	 * Adds the upload protocol.
+	 * @param protocol the protocol
+	 */
+    @Reference(dynamic=true, multiple=true, optional=true)
+	public void addUploadProtocol(final IUploadProtocol protocol) {
+	    lsUploadProtocol.add(protocol);
+	}
+
+	/**
+	 * Removes the upload protocol.
+	 * @param protocol the protocol
+	 */
+	public void removeUploadProtocol(final IUploadProtocol protocol) {
+	    lsUploadProtocol.remove(protocol);
+	}
+
+	/** The data file. */
+	private transient File dataFile = null;
+
+	/** The list file transfer queue. */
+	private List<RPCMethod> lsFileTransferQueue = new ArrayList<RPCMethod>();
+
+	/** The parameter data. */
+	private IParameterData parameterData;
+
+	/**
+	 * The last transfer complete. Store the last transfer Complete to re send
+	 * it until the transfer response has been receive to be sure that the ACS
+	 * is notified of the transfer.
+	 */
+	private List<TransferComplete> lsLastTransferComplete = Collections.synchronizedList(new ArrayList<TransferComplete>());
+
+	/**
      * The Constructor.
      */
-    protected Engine() {
+    public Engine() {
         lsDownloadProtocol.add(new HTTPDownloadProtocol());
         lsUploadProtocol.add(new FTPUploadProtocol());
     }
     
-    /**
-     * Adds the download protocol.
-     * @param protocol the protocol
-     */
-    public void addDownloadProtocol(final IDownloadProtocol protocol) {
-        lsDownloadProtocol.add(protocol);        
+    @Activate
+    public void activate(BundleContext context) {
+    	dataFile = context.getDataFile("download.data");
     }
     
     /**
-     * Removes the download protocol.
-     * @param protocol the protocol
-     */
-    public void removeDownloadProtocol(final IDownloadProtocol protocol) {
-        lsDownloadProtocol.remove(protocol);
-    }
-    
-    /**
-     * Removes the all download protocols.
-     */
-    public void removeAllDownloadProtocols() {
-        lsDownloadProtocol.clear();
-    }
-    
-    /**
+	 * Gets the last transfer complete.
+	 * @return the last transfer complete
+	 */
+	public List<TransferComplete> getLastTransferComplete() {
+	    return lsLastTransferComplete;
+	}
+
+	/**
+	 * When the Download task is finished the we remove the download request to
+	 * the list and set it to lastTransferComplete variable. The
+	 * lastTransferComplete will only set to null when the a
+	 * TransferCompleteResponse is received. The transfer is considered as
+	 * successful only if the downloaded file is applied. If it has failed the
+	 * file is deleted.
+	 * @param downloadTask the download task
+	 */
+	public void finishDownloadTask(final DelayedTask downloadTask) {
+	    TransferComplete transfer = downloadTask.getTransfer();
+	    Download download = downloadTask.getDownload();
+	    getLastTransferComplete().add(transfer);
+	    lsFileTransferQueue.remove(download);
+	    Iterator<IApplyAction> itAction = lsApplyActions.iterator();
+	    boolean isApply = false;
+	    String typeFile = download.getFileType();
+	    String filename = download.getTargetFileName();
+	    boolean needReboot = false;
+	    try {
+	        while (itAction.hasNext() && !isApply) {
+	            IApplyAction action = itAction.next();
+	            if (action.isApplicable(typeFile)) {
+	                needReboot = action.apply(filename);
+	                isApply = true;
+	            }
+	        }
+	        if (!isApply) {
+	            StringBuffer error = new StringBuffer(FaultUtil.STR_FAULT_9010);
+	            error.append(": don't know how to apply '");
+	            error.append(typeFile);
+	            error.append("'");
+	            throw new Fault(FaultUtil.FAULT_9010, error.toString());
+	        }
+	        if (needReboot) {
+	            // TODO suggest to reboot
+	        }
+	    } catch (Fault e) {
+	        FaultStruct fault;
+	        fault = transfer.getFaultStruct();
+	        fault.setFaultCode(e.getFaultcode());
+	        fault.setFaultString(e.getFaultstring());
+	        File file = new File(filename);
+	        file.delete();
+	    }
+	    Iterator<EventStruct> itEvent = transfer.getLsEvent().iterator();
+	    while (itEvent.hasNext()) {
+	        parameterData.addEvent(itEvent.next());
+	    }
+	    parameterData.addOutgoingRequest(downloadTask.getTransfer());
+	    storeData();
+	}
+
+	/**
+	 * Store data will persist only the lastTranfertComplete queue and the list
+	 * of download request. The download requests have to be done even in case
+	 * of reboot.
+	 */
+	protected void storeData() {
+	    try {
+	        dataFile.createNewFile();
+	        FileOutputStream ostream = new FileOutputStream(dataFile);
+	        ObjectOutputStream p = new ObjectOutputStream(ostream);
+	        p.writeObject(lsLastTransferComplete);
+	        p.writeObject(lsFileTransferQueue);
+	        ostream.close();
+	    } catch (IOException e) {
+	        // should not occurred.
+	        Log.error(e.getLocalizedMessage(), e);
+	    }
+	}
+
+	/**
      * Clear file transfer queue.
      */
     protected void clearFileTransferQueue() {
@@ -319,9 +337,9 @@ public final class Engine implements IEngine {
     public IDownloadProtocol findProtocolAvailability(final Download download)
             throws Fault {
         String url = download.getUrl();
-        Iterator it = lsDownloadProtocol.iterator();
+        Iterator<IDownloadProtocol> it = lsDownloadProtocol.iterator();
         while (it.hasNext()) {
-            IDownloadProtocol protocol = (IDownloadProtocol) it.next();
+            IDownloadProtocol protocol = it.next();
             if (protocol.isPrefixCompatible(url)) {
                 return protocol;
             }
@@ -349,9 +367,9 @@ public final class Engine implements IEngine {
         }
         upload.setFilename(file.getAbsolutePath());
         String url = upload.getUrl();
-        Iterator it = lsUploadProtocol.iterator();
+        Iterator<IUploadProtocol> it = lsUploadProtocol.iterator();
         while (it.hasNext()) {
-            IUploadProtocol protocol = (IUploadProtocol) it.next();
+            IUploadProtocol protocol = it.next();
             if (protocol.isPrefixCompatible(url)) {
                 return protocol;
             }
@@ -372,25 +390,18 @@ public final class Engine implements IEngine {
             throw new Fault(FaultUtil.FAULT_9004, error.toString());
         }
     }
-    
-    /**
-     * Sets the data file.
-     * @param pDataFile the new data file
-     */
-    public void setDatafile(final File pDataFile) {
-        this.dataFile = pDataFile;
-    }
-    
+        
     /**
      * Restore data.
      */
-    public void restoreData() {
+    @SuppressWarnings("unchecked")
+	public void restoreData() {
         if (dataFile != null && dataFile.exists()) {
             try {
                 FileInputStream istream = new FileInputStream(dataFile);
                 ObjectInputStream p = new ObjectInputStream(istream);
-                lsLastTransferComplete = (List) p.readObject();
-                lsFileTransferQueue = (ArrayList) p.readObject();
+                lsLastTransferComplete = (List<TransferComplete>) p.readObject();
+                lsFileTransferQueue = (ArrayList<RPCMethod>) p.readObject();
                 istream.close();
             } catch (FileNotFoundException e) {
                 // could be normal if no saved file is exist.
@@ -446,29 +457,6 @@ public final class Engine implements IEngine {
         new Timer().schedule(dt, upload.getDelaySeconds() * NB_MS_PER_SECOND);
         return true;
     }
-    
-    /**
-     * Adds the upload protocol.
-     * @param protocol the protocol
-     */
-    public void addUploadProtocol(final IUploadProtocol protocol) {
-        lsUploadProtocol.add(protocol);
-    }
-    
-    /**
-     * Removes the all upload protocols.
-     */
-    public void removeAllUploadProtocols() {
-        lsUploadProtocol.clear();
-    }
-    
-    /**
-     * Removes the upload protocol.
-     * @param protocol the protocol
-     */
-    public void removeUploadProtocol(final IUploadProtocol protocol) {
-        lsUploadProtocol.remove(protocol);
-    }    
     
     /**
      * Adds the autonomous up load.

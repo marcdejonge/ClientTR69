@@ -81,9 +81,9 @@ public final class TransferCompleteResponse implements RPCMethod {
             throw new Fault(FaultUtil.FAULT_9002, error.toString());
         }
         engine.getLastTransferComplete().remove(transfer);
-        Iterator itEvents = transfer.getLsEvent().iterator();
+        Iterator<EventStruct> itEvents = transfer.getLsEvent().iterator();
         while (itEvents.hasNext()) {
-            parameterData.deleteEvent((EventStruct) itEvents.next());
+            parameterData.deleteEvent(itEvents.next());
         }
         parameterData.removeOutgoingRequest(transfer);
     }

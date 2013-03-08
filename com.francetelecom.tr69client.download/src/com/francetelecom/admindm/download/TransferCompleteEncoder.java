@@ -23,6 +23,9 @@
 
 package com.francetelecom.admindm.download;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.download.api.TransferComplete;
@@ -31,6 +34,7 @@ import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class TransferCompleteEncoder.
  */
+@Component(properties="name=TransferComplete")
 public class TransferCompleteEncoder implements RPCEncoder {
     /**
      * Encode.

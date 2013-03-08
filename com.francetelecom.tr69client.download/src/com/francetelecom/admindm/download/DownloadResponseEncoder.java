@@ -22,6 +22,9 @@
  */
 package com.francetelecom.admindm.download;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.download.api.DownloadResponse;
@@ -29,6 +32,7 @@ import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class DownloadResponseEncoder.
  */
+@Component(properties="name=DownloadResponse")
 public final class DownloadResponseEncoder implements RPCEncoder {
     /**
      * Encode.

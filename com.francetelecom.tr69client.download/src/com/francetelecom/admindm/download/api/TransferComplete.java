@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.Session;
+import com.francetelecom.admindm.model.EventStruct;
 import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class TransferComplete.
@@ -45,7 +46,7 @@ public final class TransferComplete implements RPCMethod, Serializable {
     /** The complete time. */
     private long completeTime = 0;
     /** The list of event. */
-    private List lsEvent = new ArrayList();
+    private List<EventStruct> lsEvent = new ArrayList<EventStruct>();
     /**
      * Gets the name.
      * @return the name
@@ -121,14 +122,14 @@ public final class TransferComplete implements RPCMethod, Serializable {
      * Sets the list of event.
      * @param pLsEvent the list of event
      */
-    public void setLsEvent(final List pLsEvent) {
+    public void setLsEvent(final List<EventStruct> pLsEvent) {
         this.lsEvent = pLsEvent;
     }
     /**
      * Gets the list of event.
      * @return the list of event
      */
-    public List getLsEvent() {
+    public List<EventStruct> getLsEvent() {
         return lsEvent;
     }
     public int hashCode() {
