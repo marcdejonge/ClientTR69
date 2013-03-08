@@ -383,8 +383,8 @@ public final class ParameterData extends Observable implements IParameterData,
      * Gets the parameters array.
      * @return the parameters array
      */
-    public Object[] getParametersArray() {
-        return lsParameters.toArray();
+    public Parameter[] getParametersArray() {
+        return lsParameters.toArray(new Parameter[lsParameters.size()]);
     }
     /**
      * Gets the device id.
@@ -452,8 +452,8 @@ public final class ParameterData extends Observable implements IParameterData,
      * @return the events array
      * @see com.francetelecom.admindm.model.IParameterData#getEventsArray()
      */
-    public Object[] getEventsArray() {
-        return lsEvents.toArray();
+    public EventStruct[] getEventsArray() {
+        return lsEvents.toArray(new EventStruct[lsEvents.size()]);
     }
     /**
      * Gets the root of the data model.

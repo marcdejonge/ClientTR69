@@ -44,7 +44,7 @@ public final class Inform implements RPCMethod {
     /** The device id. */
     private DeviceIdStruct deviceId;
     /** The event. */
-    private List event = new ArrayList();
+    private List<EventStruct> event = new ArrayList<EventStruct>();
     /** The max envelopes. */
     private long maxEnvelopes = 1;
     /** The inform encoder. */
@@ -67,14 +67,14 @@ public final class Inform implements RPCMethod {
      * Gets the event.
      * @return the event
      */
-    public List getEvent() {
+    public List<EventStruct> getEvent() {
         return event;
     }
     /**
      * Sets the event.
      * @param pEvent the new event
      */
-    public void setEvent(final List pEvent) {
+    public void setEvent(final List<EventStruct> pEvent) {
         this.event = pEvent;
     }
     /**
@@ -116,14 +116,14 @@ public final class Inform implements RPCMethod {
      * Gets the parameter list.
      * @return the parameter list
      */
-    public List getParameterList() {
+    public List<ParameterValueStruct> getParameterList() {
         return parameterList;
     }
     /**
      * Sets the parameter list.
      * @param pParameterList the new parameter list
      */
-    public void setParameterList(final List pParameterList) {
+    public void setParameterList(final List<ParameterValueStruct> pParameterList) {
         this.parameterList = pParameterList;
     }
     /** The current time. */
@@ -131,7 +131,7 @@ public final class Inform implements RPCMethod {
     /** The retry count. */
     private final long retryCount;
     /** The parameter list. */
-    private List parameterList = new ArrayList();
+    private List<ParameterValueStruct> parameterList = new ArrayList<ParameterValueStruct>();
     /** The parameter data. */
     private final IParameterData parameterData;
     /**
@@ -149,18 +149,16 @@ public final class Inform implements RPCMethod {
      * unique the duplicate some event are remove.
      */
     private void constructEvents() {
-        Map mapEventnameEventBehavior = RPCMethodMng
+        Map<String, EventBehavior> mapEventnameEventBehavior = RPCMethodMng
                 .getMapEventnameEventBehavior();
-        List eventToBeRemove = new ArrayList();
-        Object[] events = parameterData.getEventsArray();
+        List<EventStruct> eventToBeRemove = new ArrayList<EventStruct>();
+        EventStruct[] events = parameterData.getEventsArray();
         EventStruct evt;
         EventBehavior eb;
         for (int i = 0; i < events.length; i++) {
-            evt = (EventStruct) events[i];
-            eb = (EventBehavior) mapEventnameEventBehavior.get(evt
-                    .getEventCode());
-            if (eb == null || (eb.isMustBeSingle() && eb.getCount() == 0)
-                    || !eb.isMustBeSingle()) {
+            evt = events[i];
+            eb = mapEventnameEventBehavior.get(evt.getEventCode());
+            if (eb == null || (eb.isMustBeSingle() && eb.getCount() == 0) || !eb.isMustBeSingle()) {
                 event.add(evt);
                 if (eb != null) {
                     eb.setCount(eb.getCount() + 1);
@@ -170,9 +168,9 @@ public final class Inform implements RPCMethod {
             }
         }
         // auto remove the duplicate event.
-        Iterator it = eventToBeRemove.iterator();
+        Iterator<EventStruct> it = eventToBeRemove.iterator();
         while (it.hasNext()) {
-            parameterData.deleteEvent((EventStruct) it.next());
+            parameterData.deleteEvent(it.next());
         }
     }
     /**
@@ -180,19 +178,18 @@ public final class Inform implements RPCMethod {
      * @param sessionId the session id
      */
     private void constructParameter(final String sessionId) {
-        Object[] obs = parameterData.getParametersArray();
+        Parameter[] obs = parameterData.getParametersArray();
         for (int i = 0; i < obs.length; i++) {
             Parameter param = (Parameter) obs[i];
             if (param.isMandatoryNotification()) {
                 parameterData.getSetParamChanged().add(param);
             }
         }
-        obs = parameterData.getSetParamChanged().toArray();
+        obs = parameterData.getSetParamChanged().toArray(new Parameter[0]);
         for (int i = 0; i < obs.length; i++) {
-            Parameter param = (Parameter) obs[i];
+            Parameter param = obs[i];
             param.getType();
-            ParameterValueStruct pvs = new ParameterValueStruct(param
-                    .getName(), param.getTextValue(sessionId), param.getType());
+            ParameterValueStruct pvs = new ParameterValueStruct(param.getName(), param.getTextValue(sessionId), param.getType());
             parameterList.add(pvs);
         }
     };

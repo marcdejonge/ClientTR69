@@ -27,7 +27,7 @@ import com.francetelecom.admindm.model.ParameterType;
  */
 public final class GetterForList implements Getter {
     /** The list. */
-    private final Collection list;
+    private final Collection<Object> list;
     /** The type. */
     private final int type;
     /**
@@ -35,7 +35,7 @@ public final class GetterForList implements Getter {
      * @param pList the list
      * @param pType the type
      */
-    public GetterForList(final Collection pList, int pType) {
+    public GetterForList(final Collection<Object> pList, int pType) {
         this.list = pList;
         this.type = pType;
     }
@@ -43,7 +43,7 @@ public final class GetterForList implements Getter {
      * Instantiates a new getter for list.
      * @param pList the list
      */
-    public GetterForList(final Collection pList) {
+    public GetterForList(final Collection<Object> pList) {
         this(pList, ParameterType.UINT);
     }
     /**

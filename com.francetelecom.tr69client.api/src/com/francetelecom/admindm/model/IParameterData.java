@@ -46,12 +46,12 @@ public interface IParameterData {
      * Gets the list of outgoing request.
      * @return the list of outgoing request
      */
-    List getLsOutgoingRequest();
+    List<RPCMethod> getLsOutgoingRequest();
     /**
      * Gets the parameter iterator.
      * @return the parameter iterator
      */
-    Iterator getParameterIterator();
+    Iterator<Parameter> getParameterIterator();
     /**
      * Checks if is model loaded.
      * @return true, if is model loaded
@@ -94,7 +94,7 @@ public interface IParameterData {
      * @return the list
      * @throws Fault the fault
      */
-    List extractParameterList(final String filter) throws Fault;
+    List<Parameter> extractParameterList(final String filter) throws Fault;
     /**
      * Extract a list of parameter corresponding to the parameterName criteria.
      * @param filters string array of full or partial path of a parameter
@@ -102,7 +102,7 @@ public interface IParameterData {
      * @throws Fault in case of parameterName'array contains unknown parameter
      *             or unknown partial path.
      */
-    List extractParameterList(final String[] filters) throws Fault;
+    List<Parameter> extractParameterList(final String[] filters) throws Fault;
     /**
      * Delete parameter.
      * @param param the parameter
@@ -122,7 +122,7 @@ public interface IParameterData {
      * Gets the parameters array.
      * @return the parameters array
      */
-    Object[] getParametersArray();
+    Parameter[] getParametersArray();
     /**
      * Sets the com.
      * @param pCom the com
@@ -137,7 +137,7 @@ public interface IParameterData {
      * Gets the events array.
      * @return the events array
      */
-    Object[] getEventsArray();
+    EventStruct[] getEventsArray();
     /**
      * Gets the device id.
      * @return the device id
@@ -167,5 +167,5 @@ public interface IParameterData {
      * Gets the sets the param changed.
      * @return the sets the param changed
      */
-    Set getSetParamChanged();
+    Set<Parameter> getSetParamChanged();
 }

@@ -20,8 +20,10 @@
  *
  */ 
 package com.francetelecom.admindm.inform;
-import java.util.Iterator;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.model.EventStruct;
@@ -30,6 +32,7 @@ import com.francetelecom.admindm.soap.Soap;
 /**
  * The Class InformEncoder.
  */
+@Component(properties="name=Inform")
 public final class InformEncoder implements RPCEncoder {
     /**
      * encode the RPCMethod.
@@ -51,9 +54,7 @@ public final class InformEncoder implements RPCEncoder {
             eInform.addChild(Element.ELEMENT, eLsEvent);
             eLsEvent.setAttribute(Soap.getSoapEncNameSpace(), "arrayType",
                     "cwmp:EventStruct[" + size + "]");
-            Iterator it = inform.getEvent().iterator();
-            while (it.hasNext()) {
-                EventStruct evt = (EventStruct) it.next();
+            for(EventStruct evt : inform.getEvent()) {
                 eLsEvent.addChild(Element.ELEMENT, evt.encoded());
             }
             Element eMaxEnvelopes = eInform.createElement("", "MaxEnvelopes");
@@ -72,9 +73,7 @@ public final class InformEncoder implements RPCEncoder {
             size = inform.getParameterList().size();
             eParameterList.setAttribute(Soap.getSoapEncNameSpace(),
                     "arrayType", "cwmp:ParameterValueStruct[" + size + "]");
-            it = inform.getParameterList().iterator();
-            while (it.hasNext()) {
-                ParameterValueStruct pvs = (ParameterValueStruct) it.next();
+            for(ParameterValueStruct pvs : inform.getParameterList()) {
                 eParameterList.addChild(Element.ELEMENT, pvs.encoded());
             }
         }

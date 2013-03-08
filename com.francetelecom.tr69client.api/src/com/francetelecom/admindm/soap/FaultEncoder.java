@@ -23,12 +23,16 @@ package com.francetelecom.admindm.soap;
 
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 
 /**
  * The Class FaultEncoder.
  */
+@Component(properties="name=Fault")
 public class FaultEncoder implements RPCEncoder {
 
     /**

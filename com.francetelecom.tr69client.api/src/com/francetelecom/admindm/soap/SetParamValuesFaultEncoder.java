@@ -22,11 +22,15 @@
 package com.francetelecom.admindm.soap;
 
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 /**
  * The Class SetParamValuesFaultEncoder.
  */
+@Component(properties="name=SetParamValuesFault")
 public final class SetParamValuesFaultEncoder implements RPCEncoder {
     /**
      * Encode.

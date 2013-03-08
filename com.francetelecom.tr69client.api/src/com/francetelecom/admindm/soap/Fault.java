@@ -53,13 +53,13 @@ public class Fault extends Exception implements RPCMethod {
      * Gets the ls set param values faults.
      * @return the ls set param values faults
      */
-    public final List getLsSetParamValuesFaults() {
+    public final List<Object> getLsSetParamValuesFaults() {
         return lsSetParamValuesFaults;
     }
     /** The faultstring. */
     private String faultstring;
     /** The ls set param values faults. */
-    private List lsSetParamValuesFaults = new ArrayList();
+    private List<Object> lsSetParamValuesFaults = new ArrayList<Object>();
     /**
      * Instantiates a new fault.
      * @param pFaultcode the faultcode
@@ -67,7 +67,7 @@ public class Fault extends Exception implements RPCMethod {
      * @param lsDetails the ls details
      */
     public Fault(final int pFaultcode, final String pFaultstring,
-            final List lsDetails) {
+            final List<Object> lsDetails) {
         this(pFaultcode, pFaultstring, lsDetails, null);
     }
     /**
@@ -78,7 +78,7 @@ public class Fault extends Exception implements RPCMethod {
      * @param exp the source Exception
      */
     public Fault(final int pFaultcode, final String pFaultstring,
-            final List lsDetails, final Exception exp) {
+            final List<Object> lsDetails, final Exception exp) {
         this.faultcode = pFaultcode;
         this.faultstring = pFaultstring;
         this.lsSetParamValuesFaults = lsDetails;

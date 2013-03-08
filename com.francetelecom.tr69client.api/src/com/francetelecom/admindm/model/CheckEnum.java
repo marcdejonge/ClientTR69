@@ -31,13 +31,13 @@ import com.francetelecom.admindm.soap.FaultUtil;
  */
 public final class CheckEnum implements CheckCallBack {
     /** The list of authorized value. */
-    private final List lsAuthorizedValue;
+    private final List<Object> lsAuthorizedValue;
     /**
      * Instantiates a new check base on an authorized value list.
      * @param pLsAuthorizedValue the authorized value
      */
     public CheckEnum(final Object[] pLsAuthorizedValue) {
-        lsAuthorizedValue = new ArrayList();
+        lsAuthorizedValue = new ArrayList<Object>();
         for (int i = 0; i < pLsAuthorizedValue.length; i++) {
             lsAuthorizedValue.add(pLsAuthorizedValue[i]);
         }
@@ -46,7 +46,7 @@ public final class CheckEnum implements CheckCallBack {
      * Instantiates a new check base on an authorized value list.
      * @param pLsAuthorizedValue the authorized value list
      */
-    public CheckEnum(final List pLsAuthorizedValue) {
+    public CheckEnum(final List<Object> pLsAuthorizedValue) {
         this.lsAuthorizedValue = pLsAuthorizedValue;
     }
     /**
@@ -61,7 +61,7 @@ public final class CheckEnum implements CheckCallBack {
             error.append(" ");
             error.append(value);
             error.append(" doesn't belong to authorized value:");
-            Iterator it = lsAuthorizedValue.iterator();
+            Iterator<Object> it = lsAuthorizedValue.iterator();
             while (it.hasNext()) {
                 error.append("\"");
                 error.append(it.next());

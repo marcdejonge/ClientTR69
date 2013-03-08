@@ -30,7 +30,7 @@ public interface IModel {
      * Gets the list profile.
      * @return the list profile
      */
-    List getListImplementedProfile();
+    List<String> getListImplementedProfile();
 
     /**
      * Sets the data.

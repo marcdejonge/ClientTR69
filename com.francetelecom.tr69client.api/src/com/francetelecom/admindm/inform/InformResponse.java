@@ -53,7 +53,7 @@ public final class InformResponse implements RPCMethod {
         IParameterData data = session.getParameterData();
         Inform inform = (Inform) session.getLastRPCMethod();
         EventStruct evt;
-        Map map = RPCMethodMng.getMapEventnameEventBehavior();
+        Map<String, EventBehavior> map = RPCMethodMng.getMapEventnameEventBehavior();
         EventBehavior behavior;
         while (!inform.getEvent().isEmpty()) {
             evt = (EventStruct) (inform.getEvent().remove(0));

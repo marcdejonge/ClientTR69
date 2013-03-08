@@ -21,12 +21,16 @@
  */ 
 package com.francetelecom.admindm.inform;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 /**
  * The Class InformResponseDecoder.
  * @author Olivier Beyler - OrangeLabs -
  */
+@Component(properties="name=InformResponse")
 public final class InformResponseDecoder implements RPCDecoder {
     /**
      * Decode.

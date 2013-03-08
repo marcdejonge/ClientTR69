@@ -20,7 +20,9 @@
  *
  */ 
 package com.francetelecom.admindm.api;
+
 import java.util.List;
+
 /**
  * The Interface RPCMethodMngService.
  */
@@ -29,50 +31,7 @@ public interface RPCMethodMngService {
      * Gets the rPC method.
      * @return the rPC method
      */
-    List getRPCMethod();
-    /**
-     * Register rpc method.
-     * @param name the name
-     */
-    void registerRPCMethod(String name);
-    /**
-     * Register rpc encoder.
-     * @param name the name
-     * @param encoder the encoder
-     */
-    void registerRPCEncoder(String name, RPCEncoder encoder);
-    /**
-     * Register rpc decoder.
-     * @param name the name
-     * @param decoder the decoder
-     */
-    void registerRPCDecoder(String name, RPCDecoder decoder);
-    /**
-     * Unregister rpc method.
-     * @param name the name
-     */
-    void unregisterRPCMethod(String name);
-    /**
-     * Unregister rpc encoder.
-     * @param name the name
-     */
-    void unregisterRPCEncoder(String name);
-    /**
-     * Unregister rpc decoder.
-     * @param name the name
-     */
-    void unregisterRPCDecoder(String name);
-    /**
-     * Register event behavior.
-     * @param name the name
-     * @param eventBehavior the event behavior
-     */
-    void registerEventBehavior(String name, EventBehavior eventBehavior);
-    /**
-     * Unregister event behavior.
-     * @param name the name
-     */
-    void unregisterEventBehavior(String name);
+    List<String> getRPCMethods();
     /**
      * Find rpc method encoder.
      * @param method the method

@@ -21,6 +21,7 @@
  */ 
 package com.francetelecom.admindm;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -28,6 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 import aQute.bnd.annotation.component.Component;
+import aQute.bnd.annotation.component.Reference;
 
 import com.francetelecom.admindm.api.EventBehavior;
 import com.francetelecom.admindm.api.EventCode;
@@ -36,17 +38,14 @@ import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCEncoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.RPCMethodMngService;
-import com.francetelecom.admindm.inform.InformEncoder;
 import com.francetelecom.admindm.inform.InformResponse;
-import com.francetelecom.admindm.inform.InformResponseDecoder;
-import com.francetelecom.admindm.soap.FaultDecoder;
-import com.francetelecom.admindm.soap.FaultEncoder;
-import com.francetelecom.admindm.soap.SetParamValuesFaultEncoder;
 /**
  * The Class RPCMethodMng.
  */
 @Component
 public final class RPCMethodMng implements RPCMethodMngService {
+	private static final String PROPERTY_KEY = "name";
+
 	private static RPCMethodMng instance;
 	
     /** The map eventname event behavior. */
@@ -55,124 +54,75 @@ public final class RPCMethodMng implements RPCMethodMngService {
     private Map<String, RPCEncoder> mapNameRPCEncoder = new HashMap<String, RPCEncoder>();
     /** The map name rpc decoder. */
     private Map<String, RPCDecoder> mapNameRPCDecoder = new HashMap<String, RPCDecoder>();
-    /** The ls rpc methods. */
-    private List<String> lsRPCMethods = new ArrayList<String>();
     /**
      * Instantiates a new rPC method mng.
      */
     public RPCMethodMng() {
     	instance = this;
-        registerRPCEncoder("Fault", new FaultEncoder());
-        registerRPCEncoder("SetParamValuesFault",
-                new SetParamValuesFaultEncoder());
-        registerRPCDecoder("Fault", new FaultDecoder());
-        registerRPCEncoder(InformResponse.NAME, new InformEncoder());
-        registerRPCDecoder(InformResponse.NAME, new InformResponseDecoder());
-        registerEventBehavior(EventCode.BOOTSTRAP, new EventBehavior(true,
-                EventCode.DISCARD_OTHER_EVENTS, InformResponse.NAME));
-        registerEventBehavior(EventCode.BOOT, new EventBehavior(true,
-                EventCode.RETRY_UNTIL_REBOOT, InformResponse.NAME));
-        registerEventBehavior(EventCode.PERIODIC, new EventBehavior(true,
-                EventCode.ALWAYS_RETRY, InformResponse.NAME));
-        registerEventBehavior(EventCode.SCHEDULED, new EventBehavior(true,
-                EventCode.ALWAYS_RETRY, InformResponse.NAME));
-        registerEventBehavior(EventCode.VALUE_CHANGE, new EventBehavior(true,
-                EventCode.RETRY_UNTIL_REBOOT, InformResponse.NAME));
-        // personal choice EventCode.Kicked never retry
-        registerEventBehavior(EventCode.KICKED, new EventBehavior(true,
-                EventCode.NEVER_RETRY, "KickedResponse"));
-        registerEventBehavior(EventCode.CONNECTION_REQUEST, new EventBehavior(
-                true, EventCode.NEVER_RETRY, InformResponse.NAME));
-        registerEventBehavior(EventCode.DIAGNOSTICS_COMPLETE,
-                new EventBehavior(true, EventCode.RETRY_UNTIL_REBOOT,
-                        InformResponse.NAME));
-        // personal choice EventCode.RequestDownload never retry
-        registerEventBehavior(EventCode.REQUEST_DOWNLOAD, new EventBehavior(
-                true, EventCode.NEVER_RETRY, "RequestDownloadResponse"));
-        // AUTONOMOUS_TRANSFER_COMPLETE is optional
-        // registerEventBehavior(EventCode.AUTONOMOUS_TRANSFER_COMPLETE, new
-        // EventBehavior(true,EventCode.ALWAYS_RETRY,
-        // "AutonomousTransferCompleteResponse"));
-        registerEventBehavior(EventCode.M_REBOOT, new EventBehavior(false,
-                EventCode.ALWAYS_RETRY, InformResponse.NAME));
-        registerEventBehavior(EventCode.M_SCHEDULE_INFORM, new EventBehavior(
-                false, EventCode.ALWAYS_RETRY, InformResponse.NAME));
-        // M_UPLOAD is optional
-        // registerEventBehavior(EventCode.M_UPLOAD, new
-        // EventBehavior(false,EventCode.ALWAYS_RETRY));
+    	
+    	addEventBehavior(new EventBehavior(true, EventCode.DISCARD_OTHER_EVENTS, InformResponse.NAME), 
+    	                 Collections.singletonMap(PROPERTY_KEY, EventCode.BOOTSTRAP));
+    	addEventBehavior(new EventBehavior(true, EventCode.RETRY_UNTIL_REBOOT, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.BOOT));
+    	addEventBehavior(new EventBehavior(true, EventCode.ALWAYS_RETRY, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.PERIODIC));
+    	addEventBehavior(new EventBehavior(true, EventCode.ALWAYS_RETRY, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.SCHEDULED));
+    	addEventBehavior(new EventBehavior(true, EventCode.RETRY_UNTIL_REBOOT, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.VALUE_CHANGE));
+    	addEventBehavior(new EventBehavior(true, EventCode.NEVER_RETRY, "KickedResponse"), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.KICKED));
+    	addEventBehavior(new EventBehavior(true, EventCode.NEVER_RETRY, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.CONNECTION_REQUEST));
+    	addEventBehavior(new EventBehavior(true, EventCode.RETRY_UNTIL_REBOOT, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.DIAGNOSTICS_COMPLETE));
+    	addEventBehavior(new EventBehavior(true, EventCode.NEVER_RETRY, "RequestDownloadResponse"), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.REQUEST_DOWNLOAD));
+    	addEventBehavior(new EventBehavior(false, EventCode.ALWAYS_RETRY, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.M_REBOOT));
+    	addEventBehavior(new EventBehavior(false, EventCode.ALWAYS_RETRY, InformResponse.NAME), 
+    			Collections.singletonMap(PROPERTY_KEY, EventCode.M_SCHEDULE_INFORM));
     }
-    /**
-     * Register rpc method.
-     * @param name the name
-     */
-    public void registerRPCMethod(final String name) {
-        StringBuffer buffer = new StringBuffer("Register RPCMethod ");
-        buffer.append(name);
-        if (lsRPCMethods.contains(name)) {
-            buffer.append(" failed: cause it was already registred");
-            Log.warn(buffer.toString());
-        } else {
-            Log.debug(buffer.toString());
-            lsRPCMethods.add(name);
-        }
+    
+    @Reference(dynamic=true, multiple=true, optional=true)
+    public void addRPCEncoder(RPCEncoder encoder, Map<String, String> properties) {
+    	if(properties.containsKey(PROPERTY_KEY) && !mapNameRPCEncoder.containsKey(properties.get(PROPERTY_KEY))) {
+    		mapNameRPCEncoder.put(properties.get(PROPERTY_KEY), encoder);
+    	} else {
+    		Log.error("Registered a RPCEncoder without name property : " + encoder.getClass().getCanonicalName());
+    	}
     }
-    /**
-     * Unregister rpc method.
-     * @param name the name
-     */
-    public void unregisterRPCMethod(final String name) {
-        StringBuffer buffer = new StringBuffer("Unregister RPCMethod ");
-        buffer.append(name);
-        if (lsRPCMethods.contains(name)) {
-            Log.debug(buffer.toString());
-            lsRPCMethods.remove(name);
-        } else {
-            buffer.append(" failed: cause it wasn't registred");
-            Log.warn(buffer.toString());
-        }
+    
+    public void removeRPCEncoder(RPCEncoder encoder, Map<String, String> properties) {
+    	mapNameRPCEncoder.remove(properties.get(PROPERTY_KEY));
     }
-    /**
-     * Register rpc encoder.
-     * @param name the name
-     * @param encoder the encoder
-     */
-    public void registerRPCEncoder(final String name, final RPCEncoder encoder) {
-        StringBuffer buffer = new StringBuffer("Register Encoder ");
-        buffer.append(name);
-        Log.debug(buffer.toString());
-        mapNameRPCEncoder.put(name, encoder);
+    
+    @Reference(dynamic=true, multiple=true, optional=true)
+    public void addRPCDecoder(RPCDecoder decoder, Map<String, String> properties) {
+    	if(properties.containsKey(PROPERTY_KEY) && !mapNameRPCDecoder.containsKey(properties.get(PROPERTY_KEY))) {
+    		mapNameRPCDecoder.put(properties.get(PROPERTY_KEY), decoder);
+    	} else {
+    		Log.error("Registered a RPCDecoder without name property : " + decoder.getClass().getCanonicalName());
+    	}
     }
-    /**
-     * Unregister rpc encoder.
-     * @param name the name
-     */
-    public void unregisterRPCEncoder(final String name) {
-        StringBuffer buffer = new StringBuffer("Unregister Encoder ");
-        buffer.append(name);
-        Log.debug(buffer.toString());
-        mapNameRPCEncoder.remove(name);
+    
+    public void removeRPCDecoder(RPCDecoder decoder, Map<String, String> properties) {
+    	mapNameRPCDecoder.remove(properties.get(PROPERTY_KEY));
     }
-    /**
-     * Register rpc decoder.
-     * @param name the name
-     * @param decoder the decoder
-     */
-    public void registerRPCDecoder(final String name, final RPCDecoder decoder) {
-        StringBuffer buffer = new StringBuffer("Register Decoder ");
-        buffer.append(name);
-        Log.debug(buffer.toString());
-        mapNameRPCDecoder.put(name, decoder);
+    
+    @Reference(dynamic=true, multiple=true, optional=true)
+    public void addEventBehavior(EventBehavior eventBehavior, Map<String, String> properties) {
+    	if(properties.containsKey(PROPERTY_KEY) && !mapEventnameEventBehavior.containsKey(properties.get(PROPERTY_KEY))) {
+    		mapEventnameEventBehavior.put(properties.get(PROPERTY_KEY), eventBehavior);
+    	} else {
+    		Log.error("Registered a EventBehavior without name property : " + eventBehavior.getClass().getCanonicalName());
+    	}
     }
-    /**
-     * Unregister rpc decoder.
-     * @param name the name
-     */
-    public void unregisterRPCDecoder(final String name) {
-        StringBuffer buffer = new StringBuffer("Unregister Decoder ");
-        buffer.append(name);
-        Log.debug(buffer.toString());
-        mapNameRPCDecoder.remove(name);
+    
+    public void removeEventBehavior(EventBehavior eventBehavior, Map<String, String> properties) {
+    	mapNameRPCDecoder.remove(properties.get(PROPERTY_KEY));
     }
+    
     /**
      * Find rpc method encoder.
      * @param method the method
@@ -211,25 +161,22 @@ public final class RPCMethodMng implements RPCMethodMngService {
         }
         return result;
     }
-    /**
-     * Gets the rpc method.
-     * @return the RPC method
-     */
-    public List<String> getRPCMethod() {
-        return lsRPCMethods;
+    
+    public List<String> getRPCMethods() {
+    	List<String> result = new ArrayList<String>();
+    	for(String name : mapNameRPCDecoder.keySet()) {
+    		if(!name.endsWith("Response")){
+    			result.add(name);
+    		}
+    	}
+    	for(String name : mapNameRPCEncoder.keySet()) {
+    		if(!name.endsWith("Response")){
+    			result.add(name);
+    		}
+    	}
+    	return result;
     }
-    /**
-     * Register event behavior.
-     * @param name the name
-     * @param eventBehavior the event behavior
-     */
-    public void registerEventBehavior(final String name,
-            final EventBehavior eventBehavior) {
-        StringBuffer buffer = new StringBuffer("Register EventBehavior ");
-        buffer.append(name);
-        Log.debug(buffer.toString());
-        mapEventnameEventBehavior.put(name, eventBehavior);
-    }
+
     /**
      * Gets the map eventname event behavior.
      * @return the map eventname event behavior
@@ -245,12 +192,5 @@ public final class RPCMethodMng implements RPCMethodMngService {
             eb.setCount(0);
         }
         return instance.mapEventnameEventBehavior;
-    }
-    /**
-     * Unregister event behavior.
-     * @param name the name
-     */
-    public void unregisterEventBehavior(final String name) {
-        mapEventnameEventBehavior.remove(name);
     }
 }
