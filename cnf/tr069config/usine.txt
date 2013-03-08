@@ -1,0 +1,28 @@
+# 
+# This file is used to by the Device Adapter to Set/Get values
+# This file must be updated with your own parameters values
+# 
+DeviceInfo.Manufacturer=FlexiblePower
+DeviceInfo.ManufacturerOUI=FlexiblePower
+DeviceInfo.ProductClass=
+DeviceInfo.SerialNumber=none
+DeviceInfo.HardwareVersion=1
+DeviceInfo.SoftwareVersion=121221001
+DeviceInfo.ProvisioningCode=
+DeviceInfo.SpecVersion=1.0
+ManagementServer.ConnectionRequestPassword=
+ManagementServer.URL=http://192.168.42.130:8080/openacs/acs
+ManagementServer.STUNServerAddress=
+ManagementServer.STUNServerPort=3478
+ManagementServer.STUNEnable=true
+ManagementServer.ConnectionRequestUsername=
+ManagementServer.ConnectionRequestPassword=
+ManagementServer.STUNMaximumKeepAlivePeriod=30
+ManagementServer.STUNMinimumKeepAlivePeriod=30
+
+ManagementServer.PeriodicInformEnable=true
+# period in seconds
+ManagementServer.PeriodicInformInterval=5
+# initial time to start periodic inform
+# parsed using java.text.SimpleDateFormat with pattern "yyyy-MM-dd'T'hh:mm:ss'Z'"
+ManagementServer.PeriodicInformTime=0001-01-01T00:00:00Z
