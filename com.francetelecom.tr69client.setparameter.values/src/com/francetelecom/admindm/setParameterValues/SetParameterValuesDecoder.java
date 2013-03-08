@@ -25,6 +25,9 @@ package com.francetelecom.admindm.setParameterValues;
 import java.util.ArrayList;
 import java.util.List;
 import org.kxml2.kdom.Element;
+
+import aQute.bnd.annotation.component.Component;
+
 import com.francetelecom.admindm.api.RPCDecoder;
 import com.francetelecom.admindm.api.RPCMethod;
 import com.francetelecom.admindm.api.XMLUtil;
@@ -34,6 +37,7 @@ import com.francetelecom.admindm.soap.FaultUtil;
 /**
  * The Class SetParameterValuesDecoder.
  */
+@Component(properties="name=SetParameterValues")
 public final class SetParameterValuesDecoder implements RPCDecoder {
     /**
      * Decode.
@@ -55,7 +59,7 @@ public final class SetParameterValuesDecoder implements RPCDecoder {
             throw new Fault(FaultUtil.FAULT_9003, error.toString());
         }
         Element eParameterList = element.getElement(index);
-        List lsParameters = new ArrayList();
+        List<Object> lsParameters = new ArrayList<Object>();
         index = eParameterList.indexOf("", "ParameterValueStruct", 0);
         while (index >= 0) {
             lsParameters.add(eParameterList.getElement(index));

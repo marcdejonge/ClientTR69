@@ -82,7 +82,7 @@ public final class SetParameterValues implements RPCMethod {
      */
     public void perform(final Session pSession) throws Fault {
         RPCMethod response;
-        List lsFault = new ArrayList();
+        List<Object> lsFault = new ArrayList<Object>();
         IParameterData parameterData = pSession.getParameterData();
         for (int i = 0; i < parameterList.length; i++) {
             try {
