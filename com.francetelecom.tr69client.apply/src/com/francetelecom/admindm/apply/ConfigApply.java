@@ -21,10 +21,14 @@
  * Author : Orange Labs R&D O.Beyler
  */
 package com.francetelecom.admindm.apply;
+import aQute.bnd.annotation.component.Component;
+
+import com.francetelecom.admindm.download.api.IApplyAction;
 import com.francetelecom.admindm.soap.Fault;
 /**
  * The Class ConfigApply.
  */
+@Component(provide=IApplyAction.class)
 public final class ConfigApply extends AbstractApply {
 	
 	/**

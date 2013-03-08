@@ -9,5 +9,5 @@ Bundle-Description: TR69 Client implementation for Apply
 Bundle-Name: ClientTR69 Apply
 
 Private-Package: com.francetelecom.admindm.apply
-Bundle-Activator: com.francetelecom.admindm.apply.Activator
+Service-Component: com.francetelecom.admindm.apply.*
 Bundle-Version: 1.1.0
