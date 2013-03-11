@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1362758313216' name='Local' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1362993901515' name='Local' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='ch.qos.logback.core'/>
@@ -373,6 +373,69 @@
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.apache.commons.fileupload'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='939e5d9a239407f57237b2fb2ad02cefca782905b2ac32f83826a7c4ad083667'/>
+      <attribute name='url' value='org.apache.commons.fileupload/org.apache.commons.fileupload-1.2.2.jar'/>
+      <attribute name='size' type='Long' value='59590'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.fileupload.util'/>
+      <attribute name='version' type='Version' value='1.2.2'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.fileupload.disk'/>
+      <attribute name='version' type='Version' value='1.2.2'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.fileupload'/>
+      <attribute name='version' type='Version' value='1.2.2'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.fileupload.servlet'/>
+      <attribute name='version' type='Version' value='1.2.2'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.fileupload.portlet'/>
+      <attribute name='version' type='Version' value='1.2.2'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.fileupload'/>
+      <attribute name='bundle-version' type='Version' value='1.2.2'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.servlet)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.servlet.http)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.apache.commons.io)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=org.apache.commons.io.output)'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='biz.aQute.bnd.annotation'/>
       <attribute name='type' value='osgi.bundle'/>
       <attribute name='version' type='Version' value='1.52.3.20120717-094352'/>
@@ -706,58 +769,6 @@
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='org.apache.felix.metatype'/>
-      <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.0.6'/>
-    </capability>
-    <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='b05db71e1a9460e42111e7984f46b3963562f49d3b6ae7ec0e51f2f92a15e944'/>
-      <attribute name='url' value='org.apache.felix.metatype/org.apache.felix.metatype-1.0.6.jar'/>
-      <attribute name='size' type='Long' value='69765'/>
-      <attribute name='mime' value='application/vnd.osgi.bundle'/>
-    </capability>
-    <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='org.apache.felix.metatype'/>
-      <attribute name='bundle-version' type='Version' value='1.0.6'/>
-    </capability>
-    <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='org.apache.felix.metatype'/>
-      <attribute name='bundle-version' type='Version' value='1.0.6'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='org.apache.felix.metatype'/>
-      <attribute name='version' type='Version' value='1.2.0'/>
-      <attribute name='bundle-symbolic-name' value='org.apache.felix.metatype'/>
-      <attribute name='bundle-version' type='Version' value='1.0.6'/>
-      <directive name='uses' value='org.osgi.service.metatype,org.osgi.framework'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='org.osgi.service.metatype'/>
-      <attribute name='version' type='Version' value='1.2.0'/>
-      <attribute name='bundle-symbolic-name' value='org.apache.felix.metatype'/>
-      <attribute name='bundle-version' type='Version' value='1.0.6'/>
-      <directive name='uses' value='org.osgi.framework'/>
-    </capability>
-    <capability namespace='osgi.service'>
-      <attribute name='objectClass' value='org.osgi.service.metatype.MetaTypeService'/>
-      <directive name='uses' value='org.osgi.service.metatype'/>
-      <directive name='effective' value='active'/>
-    </capability>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.metatype)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='org.apache.felix.webconsole'/>
       <attribute name='type' value='osgi.bundle'/>
       <attribute name='version' type='Version' value='4.0.0'/>
@@ -825,6 +836,58 @@
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.apache.felix.metatype'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='1.0.6'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='b05db71e1a9460e42111e7984f46b3963562f49d3b6ae7ec0e51f2f92a15e944'/>
+      <attribute name='url' value='org.apache.felix.metatype/org.apache.felix.metatype-1.0.6.jar'/>
+      <attribute name='size' type='Long' value='69765'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.apache.felix.metatype'/>
+      <attribute name='bundle-version' type='Version' value='1.0.6'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.apache.felix.metatype'/>
+      <attribute name='bundle-version' type='Version' value='1.0.6'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.felix.metatype'/>
+      <attribute name='version' type='Version' value='1.2.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.felix.metatype'/>
+      <attribute name='bundle-version' type='Version' value='1.0.6'/>
+      <directive name='uses' value='org.osgi.service.metatype,org.osgi.framework'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.osgi.service.metatype'/>
+      <attribute name='version' type='Version' value='1.2.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.felix.metatype'/>
+      <attribute name='bundle-version' type='Version' value='1.0.6'/>
+      <directive name='uses' value='org.osgi.framework'/>
+    </capability>
+    <capability namespace='osgi.service'>
+      <attribute name='objectClass' value='org.osgi.service.metatype.MetaTypeService'/>
+      <directive name='uses' value='org.osgi.service.metatype'/>
+      <directive name='effective' value='active'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.metatype)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))'/>
     </requirement>
   </resource>
   <resource>
@@ -1297,6 +1360,83 @@
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(osgi.wiring.package=org.xml.sax.helpers)'/>
       <directive name='resolution' value='optional'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.json'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='1.0.0.v201011060100'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='9fe20b6a7b6f7e15a1462f246013f5b7e53fc58e7b377344f70679938599727b'/>
+      <attribute name='url' value='org.json/org.json-1.0.0.jar'/>
+      <attribute name='size' type='Long' value='62422'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.json'/>
+      <attribute name='bundle-version' type='Version' value='1.0.0.v201011060100'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.json'/>
+      <attribute name='bundle-version' type='Version' value='1.0.0.v201011060100'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.json'/>
+      <attribute name='version' type='Version' value='0.0.0'/>
+      <attribute name='bundle-symbolic-name' value='org.json'/>
+      <attribute name='bundle-version' type='Version' value='1.0.0.v201011060100'/>
+    </capability>
+    <requirement namespace='osgi.ee'>
+      <directive name='filter' value='(|(osgi.ee=CDC-1.1/Foundation-1.1)(osgi.ee=J2SE-1.4))'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.apache.felix.log'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='1.0.1'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='99e720ade46420b2e4c554f6e90823e61d92730e7bd8325337b7b6b228a7d290'/>
+      <attribute name='url' value='org.apache.felix.log/org.apache.felix.log-1.0.1.jar'/>
+      <attribute name='size' type='Long' value='22243'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.apache.felix.log'/>
+      <attribute name='bundle-version' type='Version' value='1.0.1'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.apache.felix.log'/>
+      <attribute name='bundle-version' type='Version' value='1.0.1'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.osgi.service.log'/>
+      <attribute name='version' type='Version' value='1.3.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.felix.log'/>
+      <attribute name='bundle-version' type='Version' value='1.0.1'/>
+      <directive name='uses' value='org.osgi.framework'/>
+    </capability>
+    <capability namespace='osgi.service'>
+      <attribute name='objectClass' value='org.osgi.service.log.LogService'/>
+      <directive name='effective' value='active'/>
+    </capability>
+    <capability namespace='osgi.service'>
+      <attribute name='objectClass' value='org.osgi.service.log.LogReaderService'/>
+      <directive name='effective' value='active'/>
+    </capability>
+    <capability namespace='osgi.service'>
+      <attribute name='objectClass' value='org.osgi.service.log.LogService'/>
+      <directive name='uses' value='org.osgi.service.log'/>
+      <directive name='effective' value='active'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
     </requirement>
   </resource>
   <resource>
@@ -1812,6 +1952,93 @@
     <requirement namespace='osgi.ee'>
       <directive name='filter' value='(osgi.ee=J2SE-1.5)'/>
     </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.apache.commons.io'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='cc6a41dc3eaacc9e440a6bd0d2890b20d36b4ee408fe2d67122f328bb6e01581'/>
+      <attribute name='url' value='org.apache.commons.io/org.apache.commons.io-2.4.0.jar'/>
+      <attribute name='size' type='Long' value='185140'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io'/>
+      <attribute name='version' type='Version' value='1.4.9999'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.comparator'/>
+      <attribute name='version' type='Version' value='1.4.9999'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.filefilter'/>
+      <attribute name='version' type='Version' value='1.4.9999'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.input'/>
+      <attribute name='version' type='Version' value='1.4.9999'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.output'/>
+      <attribute name='version' type='Version' value='1.4.9999'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.comparator'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.filefilter'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.input'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.output'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='org.apache.commons.io.monitor'/>
+      <attribute name='version' type='Version' value='2.4.0'/>
+      <attribute name='bundle-symbolic-name' value='org.apache.commons.io'/>
+      <attribute name='bundle-version' type='Version' value='2.4.0'/>
+    </capability>
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
