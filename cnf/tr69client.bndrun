@@ -1,4 +1,4 @@
--runfw: org.apache.felix
+-runfw: org.apache.felix.framework;version='[4,5)'
 -runee: JavaSE-1.6
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=ch.qos.logback.classic)',\
@@ -22,8 +22,8 @@
 	osgi.identity;filter:='(osgi.identity=com.francetelecom.tr69client.setparameter.attributes)',\
 	osgi.identity;filter:='(osgi.identity=com.francetelecom.tr69client.setparameter.values)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.http.jetty)',\
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.http.whiteboard)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.metatype)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.scr)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.webconsole)',\
@@ -31,6 +31,7 @@
 	osgi.identity;filter:='(osgi.identity=osgi-over-slf4j)'
 -runbundles: \
 	osgi-over-slf4j;version='[1.0.0,1.0.1)',\
+	org.apache.felix.webconsole;version='[4.0.0,4.0.1)',\
 	ch.qos.logback.classic;version='[1.0.7,1.0.8)',\
 	ch.qos.logback.core;version='[1.0.7,1.0.8)',\
 	com.francetelecom.tr69client.addobject;version=latest,\
@@ -52,12 +53,15 @@
 	com.francetelecom.tr69client.setparameter.attributes;version=latest,\
 	com.francetelecom.tr69client.setparameter.values;version=latest,\
 	org.apache.commons.codec;version='[1.7.0,1.7.1)',\
+	org.apache.commons.fileupload;version='[1.2.2,1.2.3)',\
+	org.apache.commons.io;version='[2.4.0,2.4.1)',\
 	org.apache.felix.configadmin;version='[1.4.0,1.4.1)',\
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
 	org.apache.felix.http.jetty;version='[2.2.0,2.2.1)',\
 	org.apache.felix.metatype;version='[1.0.6,1.0.7)',\
 	org.apache.felix.scr;version='[1.6.0,1.6.1)',\
-	org.apache.felix.webconsole;version='[4.0.0,4.0.1)',\
 	org.apache.felix.webconsole.plugins.ds;version='[1.0.0,1.0.1)',\
+	org.json;version='[1.0.0,1.0.1)',\
 	org.knopflerfish.bundle.kxml-LIB;version='[2.3.0,2.3.1)',\
 	osgi.cmpn;version='[4.3.0,4.3.1)',\
 	slf4j.api;version='[1.7.2,1.7.3)'
